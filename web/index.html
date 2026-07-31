@@ -1,0 +1,728 @@
+<!doctype html>
+<html lang="cs">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>E-VIPO MVHR — rekuperační jednotka, český návod</title>
+<meta name="description" content="Kompletní český překlad návodu k rekuperační jednotce E-VIPO řady TP (ERV/HRV 350–600) a řídicímu systému s panelem VK8: bezpečnost, instalace, zapojení, ovládání, údržba.">
+<style>
+:root{
+  --bg:#eef2f4; --panel:#ffffff; --panel-2:#f6f9fa;
+  --ink:#16232b; --ink-soft:#3a4b55; --muted:#5d6f79; --faint:#8a99a1;
+  --line:#d7e0e4; --line-soft:#e7edf0;
+  --brand:#0d7f9c; --brand-strong:#0a6580; --brand-tint:#e2f1f5;
+  --heat:#c9722a; --heat-tint:#f6e9dd;
+  --danger:#c0413c; --danger-tint:#f6e2e1;
+  --warn:#a9761a; --warn-tint:#f4ecd8;
+  --bar:#16232b; --bar-ink:#eef4f6;
+  --shadow:0 1px 2px rgba(18,35,45,.06),0 6px 20px rgba(18,35,45,.05);
+  --radius:12px;
+}
+@media (prefers-color-scheme:dark){
+  :root{
+    --bg:#0d1418; --panel:#141e24; --panel-2:#111a20;
+    --ink:#e6eef2; --ink-soft:#c3d0d7; --muted:#93a4ad; --faint:#6f8088;
+    --line:#26333b; --line-soft:#1e2a31;
+    --brand:#39b7d4; --brand-strong:#5bc8e0; --brand-tint:#122b33;
+    --heat:#e2a05a; --heat-tint:#2c2015;
+    --danger:#e97b74; --danger-tint:#301a19;
+    --warn:#d8b25a; --warn-tint:#2a2412;
+    --bar:#0a1216; --bar-ink:#dfeaef;
+    --shadow:0 1px 2px rgba(0,0,0,.3),0 8px 26px rgba(0,0,0,.35);
+  }
+}
+:root[data-theme="light"]{
+  --bg:#eef2f4; --panel:#ffffff; --panel-2:#f6f9fa;
+  --ink:#16232b; --ink-soft:#3a4b55; --muted:#5d6f79; --faint:#8a99a1;
+  --line:#d7e0e4; --line-soft:#e7edf0;
+  --brand:#0d7f9c; --brand-strong:#0a6580; --brand-tint:#e2f1f5;
+  --heat:#c9722a; --heat-tint:#f6e9dd;
+  --danger:#c0413c; --danger-tint:#f6e2e1;
+  --warn:#a9761a; --warn-tint:#f4ecd8;
+  --bar:#16232b; --bar-ink:#eef4f6;
+  --shadow:0 1px 2px rgba(18,35,45,.06),0 6px 20px rgba(18,35,45,.05);
+}
+:root[data-theme="dark"]{
+  --bg:#0d1418; --panel:#141e24; --panel-2:#111a20;
+  --ink:#e6eef2; --ink-soft:#c3d0d7; --muted:#93a4ad; --faint:#6f8088;
+  --line:#26333b; --line-soft:#1e2a31;
+  --brand:#39b7d4; --brand-strong:#5bc8e0; --brand-tint:#122b33;
+  --heat:#e2a05a; --heat-tint:#2c2015;
+  --danger:#e97b74; --danger-tint:#301a19;
+  --warn:#d8b25a; --warn-tint:#2a2412;
+  --bar:#0a1216; --bar-ink:#dfeaef;
+  --shadow:0 1px 2px rgba(0,0,0,.3),0 8px 26px rgba(0,0,0,.35);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{
+  margin:0;background:var(--bg);color:var(--ink);
+  font-family:"Segoe UI",system-ui,-apple-system,"Helvetica Neue",Arial,sans-serif;
+  font-size:16px;line-height:1.62;-webkit-font-smoothing:antialiased;
+  text-underline-offset:2px;
+}
+.mono{font-family:ui-monospace,"SF Mono","Cascadia Code",Consolas,"Liberation Mono",monospace}
+.wrap{max-width:1120px;margin:0 auto;padding:0 20px}
+.topbar{
+  position:sticky;top:0;z-index:40;background:color-mix(in srgb,var(--bg) 88%,transparent);
+  backdrop-filter:saturate(1.4) blur(8px);border-bottom:1px solid var(--line);
+}
+.topbar .row{display:flex;align-items:center;gap:14px;height:56px}
+.brand{font-family:Georgia,"Times New Roman",serif;font-weight:700;letter-spacing:.06em;
+  font-size:1.15rem;color:var(--ink);text-decoration:none;white-space:nowrap}
+.topbar .tag{font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);
+  border-left:1px solid var(--line);padding-left:14px}
+.spacer{flex:1}
+.themebtn{appearance:none;border:1px solid var(--line);background:var(--panel);color:var(--ink-soft);
+  border-radius:8px;padding:6px 10px;cursor:pointer;font-size:.85rem}
+.hero{padding:46px 0 8px}
+.hero h1{font-family:Georgia,serif;font-size:clamp(1.6rem,3.4vw,2.4rem);line-height:1.2;margin:0 0 10px}
+.hero p.lead{max-width:70ch;color:var(--ink-soft);margin:0 0 14px}
+.badges{display:flex;flex-wrap:wrap;gap:8px;margin:14px 0 0}
+.badge{font-size:.78rem;padding:4px 10px;border-radius:999px;border:1px solid var(--line);
+  background:var(--panel);color:var(--muted)}
+.badge.b{background:var(--brand-tint);border-color:transparent;color:var(--brand-strong)}
+main{padding:26px 0 70px}
+.grid{display:grid;grid-template-columns:250px minmax(0,1fr);gap:34px;align-items:start}
+@media (max-width:900px){.grid{grid-template-columns:1fr}}
+nav.toc{position:sticky;top:76px;max-height:calc(100vh - 100px);overflow:auto;
+  background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);
+  padding:16px 14px;box-shadow:var(--shadow);font-size:.88rem}
+nav.toc .h{font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--faint);margin:10px 6px 4px}
+nav.toc a{display:block;color:var(--ink-soft);text-decoration:none;border-radius:7px;padding:5px 8px}
+nav.toc a:hover{background:var(--panel-2);color:var(--ink)}
+@media (max-width:900px){nav.toc{position:static;max-height:none}}
+section.card{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);
+  box-shadow:var(--shadow);padding:26px 28px;margin:0 0 24px;overflow:hidden}
+section.card h2{font-family:Georgia,serif;font-size:1.45rem;margin:0 0 6px;scroll-margin-top:80px}
+section.card h3{font-size:1.04rem;margin:22px 0 6px;color:var(--ink)}
+section.card h4{font-size:.95rem;margin:16px 0 4px;color:var(--ink-soft)}
+.kicker{font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;color:var(--brand);margin:0 0 2px}
+p{margin:8px 0}
+ul{margin:6px 0 12px;padding-left:22px}
+li{margin:3px 0}
+li::marker{color:var(--brand)}
+.note,.warnbox,.dangerbox{border-radius:10px;padding:12px 16px;margin:14px 0;font-size:.95rem}
+.note{background:var(--brand-tint);border-left:4px solid var(--brand)}
+.warnbox{background:var(--warn-tint);border-left:4px solid var(--warn)}
+.dangerbox{background:var(--danger-tint);border-left:4px solid var(--danger)}
+table{border-collapse:collapse;width:100%;font-size:.9rem;margin:12px 0}
+.tablewrap{overflow-x:auto}
+th,td{border:1px solid var(--line);padding:7px 10px;text-align:left;vertical-align:top}
+th{background:var(--panel-2);font-weight:600}
+figure{margin:18px 0}
+figure img{max-width:100%;height:auto;border-radius:10px;border:1px solid var(--line);display:block;cursor:zoom-in}
+figure figcaption{font-size:.82rem;color:var(--muted);margin-top:6px}
+.figrow{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px}
+kbd{background:var(--panel-2);border:1px solid var(--line);border-bottom-width:2px;border-radius:6px;
+  padding:1px 7px;font-size:.85em;font-family:inherit}
+footer{border-top:1px solid var(--line);padding:22px 0 40px;color:var(--muted);font-size:.85rem}
+a{color:var(--brand)}
+.lightbox{position:fixed;inset:0;background:rgba(0,0,0,.85);display:none;align-items:center;justify-content:center;z-index:100;cursor:zoom-out}
+.lightbox.open{display:flex}
+.lightbox img{max-width:96vw;max-height:96vh;border-radius:6px}
+</style>
+</head>
+<body>
+<div class="topbar"><div class="wrap row">
+  <a class="brand" href="/">paja.hkfree.org</a>
+  <span class="tag">Rekuperace E-VIPO</span>
+  <span class="spacer"></span>
+  <button class="themebtn" id="themeToggle">Tmavý režim</button>
+</div></div>
+
+<header class="hero wrap">
+  <h1>E-VIPO MVHR — rekuperační jednotka<br>český návod k instalaci a obsluze</h1>
+  <p class="lead">Kompletní český překlad dvou originálních manuálů: <strong>jednotky řady TP</strong> (modely TP350–TP600, provedení ERV i HRV, user manual v3.0) a <strong>řídicího systému s dotykovým panelem VK8</strong> (manuál OV1.2). U každé kapitoly je přiložena fotografie originální stránky — kliknutím se zvětší.</p>
+  <div class="badges">
+    <span class="badge b">Řada TP · ERV/HRV 350–600 m³/h</span>
+    <span class="badge b">Panel VK8 · Tuya WiFi</span>
+    <span class="badge">Protiproudý výměník · EC ventilátory</span>
+    <span class="badge">Ø 160 mm · 47 kg</span>
+  </div>
+</header>
+
+<main class="wrap"><div class="grid">
+<nav class="toc" aria-label="Obsah">
+  <div class="h">Jednotka (řada TP)</div>
+  <a href="#uvod">Přehled a modely</a>
+  <a href="#bezpecnost">1 · Bezpečnost</a>
+  <a href="#dodavka">2.1 · Obsah dodávky a příslušenství</a>
+  <a href="#spec">2.2 · Technická specifikace</a>
+  <a href="#konstrukce">2.3 · Konstrukce</a>
+  <a href="#rozmery">2.4 · Rozměry</a>
+  <a href="#instalace">3.1–3.2 · Instalace</a>
+  <a href="#montaz">Montáž na stěnu</a>
+  <a href="#uvedeni">3.3–3.4 · Uvedení do provozu</a>
+  <a href="#udrzba">4 · Údržba filtrů a výměníku</a>
+  <a href="#zaver">Závěrečná upozornění</a>
+  <div class="h">Řídicí systém VK8</div>
+  <a href="#vk8-uvod">Přehled</a>
+  <a href="#vk8-zapojeni">1 · Zapojení a svorkovnice</a>
+  <a href="#vk8-desky">Externí desky a čidla</a>
+  <a href="#vk8-home">2 · Hlavní obrazovka</a>
+  <a href="#vk8-ovladani">Ovládací prvky</a>
+  <a href="#vk8-nastaveni">Nastavení: WiFi, čas, časovač</a>
+  <a href="#vk8-funkce">Další funkce a filtry</a>
+  <a href="#vk8-automatika">Automatika: PM2.5, CO₂, VOC, vlhkost</a>
+  <a href="#vk8-modbus">Modbus RS485 protokol</a>
+</nav>
+
+<div class="content">
+
+<!-- ============ ČÁST 1: JEDNOTKA ============ -->
+<section class="card" id="uvod">
+  <p class="kicker">Jednotka · úvod</p>
+  <h2>Přehled a modely řady TP</h2>
+  <p>Manuál se týká rekuperačních jednotek E-VIPO MVHR (Mechanical Ventilation with Heat Recovery) <strong>řady TP</strong>. Každý výkonový stupeň existuje ve dvou provedeních:</p>
+  <ul>
+    <li><strong>ERV</strong> (Energy Recovery Ventilation) — entalpický výměník, předává i vlhkost, <em>bez</em> odvodu kondenzátu</li>
+    <li><strong>HRV</strong> (Heat Recovery Ventilation) — tepelný výměník, vyžaduje odvod kondenzátu</li>
+  </ul>
+  <div class="tablewrap"><table>
+    <tr><th>ERV modely</th><th>HRV modely</th></tr>
+    <tr><td>TP350-ERV-B-Z-EC</td><td>TP350-HRV-B-Z-EC</td></tr>
+    <tr><td>TP400-ERV-B-Z-EC</td><td>TP400-HRV-B-Z-EC</td></tr>
+    <tr><td>TP450-ERV-B-Z-EC</td><td>TP450-HRV-B-Z-EC</td></tr>
+    <tr><td>TP500-ERV-B-Z-EC</td><td>TP500-HRV-B-Z-EC</td></tr>
+    <tr><td>TP550-ERV-B-Z-EC</td><td>TP550-HRV-B-Z-EC</td></tr>
+    <tr><td>TP600-ERV-B-Z-EC</td><td>TP600-HRV-B-Z-EC</td></tr>
+  </table></div>
+  <figure><img src="foto/27.jpg" loading="lazy" alt="Titulní strana manuálu jednotky"><figcaption>Originál: titulní strana a obsah manuálu jednotky (v3.0)</figcaption></figure>
+</section>
+
+<section class="card" id="bezpecnost">
+  <p class="kicker">Jednotka · kapitola 01</p>
+  <h2>Bezpečnostní požadavky a upozornění</h2>
+  <p>Výběr, projekt a montáž větracího systému svěřte odborníkům na vzduchotechniku; elektrická i stavební část musí odpovídat platným místním a národním normám a předpisům. Kdo tyto podmínky nesplňuje, může instalaci provést podle pokynů v tomto návodu — při nedodržení požadavků ale systém nemusí pracovat správně.</p>
+  <h3>1.1 Zásady pro instalaci a provoz</h3>
+  <ul>
+    <li>Návod uchovejte po celou dobu životnosti zařízení a před instalací i provozem si jej pečlivě přečtěte</li>
+    <li>Přijměte opatření proti vzniku nebezpečných situací</li>
+    <li>Jednotku svévolně nerozebírejte, neopravujte ani neupravujte bez konzultace s odborníkem</li>
+    <li>Náhradní díly kupujte u dodavatele nebo servisu</li>
+    <li>Při úniku plynu v domě větrejte okny — jednotku nepoužívejte</li>
+    <li>Hořlavé a výbušné látky neskladujte ve stejném prostoru s jednotkou</li>
+    <li>Při neobvyklém zvuku, zápachu či jiné anomálii kontaktujte dodavatele</li>
+    <li>Zabraňte kontaktu přenášeného vzduchu se zdroji ohně (otevřený plamen, oleje, chemikálie)</li>
+    <li>Za provozu nesmí být vzduchovody ucpané</li>
+    <li>Jednotku chraňte před přímým sluncem a vlhkem, umístěte ji v suchém větraném prostoru</li>
+    <li>Instalaci, provoz i údržbu smí provádět jen vyškolená a kvalifikovaná osoba</li>
+    <li>Při extrémní prašnosti venku (např. písečná bouře) systém nepoužívejte</li>
+    <li>Chybné zapojení nebo obsluha vede k vážnému poškození jednotky a úrazům</li>
+    <li>Před sejmutím krytu, instalací nebo zásahem se ujistěte, že je odpojené napájení</li>
+    <li>Jednotku, ovládací panel ani další díly při instalaci, provozu a údržbě nenamočte</li>
+    <li>Děti a osoby se sníženými fyzickými, mentálními či smyslovými schopnostmi nesmí zařízení obsluhovat</li>
+    <li>Použité nářadí a materiál musí odpovídat požadavkům instalace</li>
+  </ul>
+  <figure><img src="foto/03.jpg" loading="lazy" alt="Bezpečnost a obsah dodávky"><figcaption>Originál: kap. 01 bezpečnost, 1.1 zásady, 02 model a 2.1 obsah dodávky (str. 2)</figcaption></figure>
+</section>
+
+<section class="card" id="dodavka">
+  <p class="kicker">Jednotka · kapitola 02</p>
+  <h2>2.1 Obsah dodávky a příslušenství</h2>
+  <ul>
+    <li>Jednotka MVHR — 1 ks</li>
+    <li>Ovládací panel — 1 ks</li>
+    <li>Uživatelský manuál — 2 ks</li>
+    <li>Příslušenství (jen pokud bylo součástí koupě)</li>
+  </ul>
+  <h3>Volitelné příslušenství</h3>
+  <div class="tablewrap"><table>
+    <tr><th>Příslušenství</th><th>Model</th><th>Poznámka</th></tr>
+    <tr><td>Externí čidlo CO₂ / RH &amp; teplota</td><td>ESB-CRT-01</td><td rowspan="2">Deska čidla pro automatiku VK8; přes propojovací desku lze připojit až 8 externích čidel</td></tr>
+    <tr><td>Externí čidlo RH &amp; teplota</td><td>ESB-RT-01</td></tr>
+    <tr><td>Propojovací deska čidel</td><td>ESCB-CRT-01</td><td>Připojuje externí čidla k řídicímu systému</td></tr>
+    <tr><td>Externí boost tlačítko</td><td>EBS-01</td><td>Přes propojovací desku až 10 tlačítek</td></tr>
+    <tr><td>Propojovací deska boost tlačítek</td><td>EBCB-01</td><td>Připojuje boost tlačítka k řídicímu systému</td></tr>
+    <tr><td>Externí elektrický ohřívač</td><td>EEH-01</td><td>Přes reléovou desku až 2 ohřívače</td></tr>
+    <tr><td>Externí elektrická vzduchová klapka</td><td>EEAD-01</td><td>Přes reléovou desku až 2 klapky</td></tr>
+    <tr><td>Externí reléová deska</td><td>ERB-01</td><td>Připojuje externí klapky a ohřívače k řídicímu systému</td></tr>
+  </table></div>
+  <p>Žádná z těchto položek není standardní součástí dodávky — vše se dokupuje jako příslušenství.</p>
+  <figure><img src="foto/04.jpg" loading="lazy" alt="Seznam příslušenství"><figcaption>Originál: přehled volitelného příslušenství</figcaption></figure>
+</section>
+
+<section class="card" id="spec">
+  <p class="kicker">Jednotka · kapitola 2.2</p>
+  <h2>2.2 Technická specifikace</h2>
+  <p>Hodnoty společné pro všechny modely: EC motory ventilátorů, napájení 200–240 V~ 50/60 Hz, hmotnost 47 kg, odtahový filtr G4, přívodní filtr G4 + volitelný F8, protiproudý výměník, izolace i skříň z EPP, teplota přenášeného vzduchu −25 až +50 °C, provozní teplota okolí +5 až +40 °C, relativní vlhkost okolí &lt; 80 %, napojení na potrubí Ø 160 mm.</p>
+  <div class="tablewrap"><table>
+    <tr><th>Model (ERV / HRV)</th><th>Max. průtok</th><th>Max. příkon ERV</th><th>Max. příkon HRV</th><th>Max. statický tlak</th></tr>
+    <tr><td>TP350</td><td>350 m³/h @ 100 Pa</td><td>100 W · 0,74 A</td><td>104 W · 0,76 A</td><td>770 Pa</td></tr>
+    <tr><td>TP400</td><td>400 m³/h @ 100 Pa</td><td>143 W · 1 A</td><td>150 W · 1 A</td><td>770 Pa</td></tr>
+    <tr><td>TP450</td><td>450 m³/h @ 100 Pa</td><td>194 W · 1,3 A</td><td>210 W · 1,4 A</td><td>770 Pa</td></tr>
+    <tr><td>TP500</td><td>500 m³/h @ 100 Pa</td><td>254 W · 1,67 A</td><td>280 W · 1,77 A</td><td>770 Pa</td></tr>
+    <tr><td>TP550</td><td>550 m³/h @ 100 Pa</td><td>370 W · 2,3 A</td><td>390 W · 2,4 A</td><td>770 Pa</td></tr>
+    <tr><td>TP600</td><td>600 m³/h @ 100 Pa</td><td>444 W · 2,7 A</td><td>460 W · 2,8 A</td><td>790 Pa</td></tr>
+  </table></div>
+  <div class="note">Při osazení přívodního filtru F8 může průtok přívodního vzduchu klesnout až o 10 %.</div>
+  <div class="figrow">
+    <figure><img src="foto/18.jpg" loading="lazy" alt="Specifikace ERV"><figcaption>Originál: specifikace modelů ERV</figcaption></figure>
+    <figure><img src="foto/07.jpg" loading="lazy" alt="Specifikace HRV"><figcaption>Originál: specifikace modelů HRV</figcaption></figure>
+  </div>
+</section>
+
+<section class="card" id="konstrukce">
+  <p class="kicker">Jednotka · kapitola 2.3</p>
+  <h2>2.3 Konstrukce jednotky</h2>
+  <p>Jednotka se vyrábí v <strong>levé</strong> a <strong>pravé orientaci</strong> — liší se pořadím hrdel (přívod do domu / odtah z domu / sání venkovního vzduchu / výfuk ven). Uvnitř jednotky najdete:</p>
+  <ul>
+    <li>čidlo teploty a relativní vlhkosti (pro automatiku VK8) — na odtahové straně</li>
+    <li>odtahový ventilátor a přívodní ventilátor (EC)</li>
+    <li>bypassovou klapku</li>
+    <li>řídicí jednotku</li>
+    <li>teplotní čidla (pro automatiku VK2 / VK8)</li>
+    <li>přívodní filtr G4, odtahový filtr G4, volitelný přívodní filtr F8</li>
+    <li>protiproudý výměník tepla</li>
+  </ul>
+  <figure><img src="foto/09.jpg" loading="lazy" alt="Konstrukce jednotky"><figcaption>Originál: rozmístění komponent pro levou i pravou orientaci</figcaption></figure>
+</section>
+
+<section class="card" id="rozmery">
+  <p class="kicker">Jednotka · kapitola 2.4</p>
+  <h2>2.4 Rozměry</h2>
+  <div class="tablewrap"><table>
+    <tr><th>L</th><th>L1</th><th>L2</th><th>L3</th><th>L4</th><th>B</th><th>B1</th><th>B2</th><th>B3</th><th>B4</th><th>H</th><th>H1</th><th>H2</th><th>H3</th><th>H4</th><th>ØD</th></tr>
+    <tr><td>820</td><td>391</td><td>116</td><td>680</td><td>70</td><td>623</td><td>620</td><td>29</td><td>320</td><td>150</td><td>970</td><td>40</td><td>163</td><td>425</td><td>382</td><td>160</td></tr>
+  </table></div>
+  <p>Všechny rozměry v milimetrech.</p>
+  <figure><img src="foto/16.jpg" loading="lazy" alt="Rozměrový výkres"><figcaption>Originál: rozměrový výkres jednotky</figcaption></figure>
+</section>
+
+<section class="card" id="instalace">
+  <p class="kicker">Jednotka · kapitola 03</p>
+  <h2>3.1–3.2 Instalace</h2>
+  <div class="note">Zapojení napájení a řídicího systému popisuje samostatný manuál řídicího systému — <a href="#vk8-uvod">druhá část této stránky</a>.</div>
+  <h3>3.1 Doporučení pro instalaci</h3>
+  <h4>Vedení vzduchovodů</h4>
+  <ul>
+    <li>Vzduchovody veďte vodorovně nebo svisle a co nejrovněji</li>
+    <li>Kotvěte je sponami každý 1 metr, aby nevibrovaly</li>
+    <li>Spoje potrubí s jednotkou zajistěte hliníkovou (tin foil) páskou a stahovací páskou</li>
+    <li>Páska musí být hladká, nezvrásněná a těsná — spoje utěsněte proti úniku vzduchu</li>
+    <li>Délky jednotlivých větví nepřekračujte nad běžná doporučení</li>
+    <li>Vzduchovody musí být z nehořlavých materiálů s tepelnou izolací</li>
+    <li>Kolen používejte co nejméně; oblouk kolena navrhujte jako kruhový, ne ostrý 90° zlom</li>
+  </ul>
+  <h4>Umístění nasávání a výfuku</h4>
+  <ul>
+    <li>Vyústky na fasádě a stropech volte s malým odporem vzduchu</li>
+    <li>Zabraňte zpětnému nasátí znečištěného odpadního vzduchu do čerstvého přívodu</li>
+    <li>Mezi nasáváním a výfukem na fasádě dodržte dostatečný odstup</li>
+    <li>Nasávání i výfuk utěsněte proti netěsnostem</li>
+    <li>Interiérové vyústky neumisťujte do mrtvých koutů místností</li>
+  </ul>
+  <figure><img src="foto/14.jpg" loading="lazy" alt="Doporučení pro instalaci"><figcaption>Originál: kap. 3.1 — vzduchovody a vyústky</figcaption></figure>
+  <h3>3.2 Instalace jednotky</h3>
+  <h4>Volba servisní strany</h4>
+  <ul><li>Zvolte správnou stranu jednotky pro instalaci (levá, nebo pravá orientace)</li></ul>
+  <h4>Odvod kondenzátu — jen HRV modely</h4>
+  <ul>
+    <li>Odvod kondenzátu není součástí dodávky; kondenzát vzniká podle počasí za provozu</li>
+    <li>Výstup kondenzátu musí uživatel napojit potrubím do kanalizace</li>
+    <li>Potrubí spádujte dolů, průměr odpovídá vypouštěcímu otvoru</li>
+    <li>Postup: vyjměte výměník → sifon/vypouštěcí koncovku namontujte dnem vzhůru → výměník vraťte zpět</li>
+  </ul>
+  <h4>ERV modely</h4>
+  <ul>
+    <li>Odvod kondenzátu se nepřipojuje — zátky z vypouštěcích otvorů nevyndávejte (unikal by vzduch)</li>
+    <li>Entalpický výměník kondenzát netvoří, drenáž není potřeba</li>
+  </ul>
+  <h4>Možné polohy</h4>
+  <ul>
+    <li><strong>HRV:</strong> pouze svislá montáž na stěnu</li>
+    <li><strong>ERV:</strong> na strop (naležato), na stěnu (svisle i vodorovně), na podlahu (naležato)</li>
+    <li>Kolem jednotky nechte dost místa na výměnu filtrů, servis, opravy, údržbu a demontáž</li>
+  </ul>
+  <figure><img src="foto/23.jpg" loading="lazy" alt="Instalace, drenáž, polohy"><figcaption>Originál: kap. 3.2 — servisní strana, drenáž HRV/ERV, montážní polohy (str. 8)</figcaption></figure>
+</section>
+
+<section class="card" id="montaz">
+  <p class="kicker">Jednotka · montáž</p>
+  <h2>Montáž na stěnu</h2>
+  <ul>
+    <li>Před montáží zvažte materiál nosné plochy a hmotnost jednotky — stěna musí jednotku dlouhodobě unést</li>
+    <li>Vyměřte čtyři kotevní body podle kapitoly <a href="#rozmery">2.4 Rozměry</a>; ověřte výšku vrtání a průměr otvorů, body si na stěně označte</li>
+    <li>Vyvrtejte čtyři otvory pro hmoždinky, hmoždinky usaďte</li>
+    <li>Na stěnu přišroubujte dvě vodorovné montážní lišty</li>
+    <li>Na zvolené zadní straně jednotky vyjměte čtyři malé čtverce z EPP, na závitové tyče otvorů nasaďte matice a přišroubujte dvě svislé montážní lišty na jednotku</li>
+    <li>Jednotku zavěste na stěnu na všechny čtyři lišty</li>
+    <li>Typ šroubů, tyčí a komponent volte podle podmínek stavby; jednotku na stěně zajistěte maticemi s podložkami na všech čtyřech úchytech</li>
+  </ul>
+  <figure><img src="foto/05.jpg" loading="lazy" alt="Montáž na stěnu"><figcaption>Originál: montážní lišty a zavěšení jednotky (str. 9)</figcaption></figure>
+</section>
+
+<section class="card" id="uvedeni">
+  <p class="kicker">Jednotka · kapitola 3.3–3.4</p>
+  <h2>Kontrola a uvedení do provozu</h2>
+  <h3>3.3 Kontrola před zkušebním provozem</h3>
+  <ul>
+    <li>Zkontrolujte potrubní systém proti projektové dokumentaci a tomuto návodu</li>
+    <li>Ověřte správný směr proudění v potrubí a pevné ukotvení jednotky</li>
+    <li>Zkontrolujte všechna výše uvedená opatření a soulad umístění s pokyny návodu</li>
+    <li>Ujistěte se, že v potrubí ani jednotce nezůstaly nečistoty nebo nářadí</li>
+    <li>Zkontrolujte pevné osazení nasávání i výfuku</li>
+    <li>Zkontrolujte elektrický obvod: průřezy napájecích a ovládacích vodičů, způsob zapojení, dotažení kontaktů</li>
+    <li>Napájení zkontrolujte podle schématu zapojení; napětí musí být v normálním rozsahu 230 V~</li>
+  </ul>
+  <h3>3.4 Uvedení větracího systému do provozu</h3>
+  <ul>
+    <li>Během zkoušky nestrkejte prsty ani předměty do nasávání a výfuku</li>
+    <li>Při jakékoli anomálii ihned odpojte napájení a kontaktujte dodavatele</li>
+    <li>Zapojte napájení a spusťte jednotku; otestujte ventilátory a správný chod systému</li>
+    <li>Sledujte neobvyklé vibrace a zvuky; při potížích vypněte a zkontrolujte znovu</li>
+    <li>Bez anomálií je možné systém používat</li>
+    <li>Dokud nejsou dokončeny ostatní vnitřní stavební práce, systém dočasně nepoužívejte k větrání a zabraňte vniknutí stavebního prachu do jednotky</li>
+  </ul>
+  <figure><img src="foto/19.jpg" loading="lazy" alt="Kontrola a uvedení do provozu"><figcaption>Originál: kap. 3.3, 3.4 a úvod kapitoly 04 (str. 10)</figcaption></figure>
+</section>
+
+<section class="card" id="udrzba">
+  <p class="kicker">Jednotka · kapitola 04</p>
+  <h2>Údržba filtrů a výměníku</h2>
+  <ul>
+    <li>Pro udržení účinnosti větrání se doporučuje pravidelná údržba filtrů a výměníku; intervaly níže ovlivňuje reálné prostředí — cyklus čištění i životnost filtru se mohou lišit</li>
+    <li>Jednotka musí běžet vždy s filtry, jinak prach zanese výměník a systém selže</li>
+    <li>Před údržbou jednotku vypněte a odpojte napájení</li>
+    <li>Filtr vracejte štítkem ven; výměník vracejte ve správné původní orientaci</li>
+  </ul>
+  <div class="tablewrap"><table>
+    <tr><th>Díl</th><th>Interval</th><th>Údržba</th></tr>
+    <tr><td>4.1 · Filtry G4 (přívod i odtah)</td><td>3 měsíce</td><td>čištění praním, nebo výměna</td></tr>
+    <tr><td>4.2 · Filtr F8 (přívod)</td><td>6 měsíců</td><td>čištění vysavačem, nebo výměna</td></tr>
+    <tr><td>4.3 · Výměník tepla/energie</td><td>12 měsíců</td><td>čištění vysavačem i praním (nevyměňuje se)</td></tr>
+  </table></div>
+  <h3>Výměna filtru (G4 i F8 shodně)</h3>
+  <ul>
+    <li><strong>Krok 1:</strong> odšroubujte a sejměte servisní panel jednotky</li>
+    <li><strong>Krok 2:</strong> vyjměte filtr</li>
+    <li><strong>Krok 3:</strong> nový filtr vložte na původní místo ve správné orientaci</li>
+    <li><strong>Krok 4:</strong> vraťte servisní panel a přišroubujte</li>
+  </ul>
+  <div class="note">Po vyčištění či výměně filtru vynulujte počítadlo v panelu VK8 — viz <a href="#vk8-funkce">Správa filtrů</a>.</div>
+  <figure><img src="foto/12.jpg" loading="lazy" alt="Údržba filtrů"><figcaption>Originál: kap. 4.1–4.3 — intervaly a postup výměny</figcaption></figure>
+</section>
+
+<section class="card" id="zaver">
+  <p class="kicker">Jednotka · závěr</p>
+  <h2>Závěrečná upozornění</h2>
+  <ul>
+    <li>Při potížích za provozu nebo údržby kontaktujte dodavatele či servis; zásahy provádějte až po schválení — jinak výrobce neodpovídá za následky neautorizovaných změn</li>
+    <li>Výrobce nenese odpovědnost za následky úprav jednotky nebo elektroniky bez jeho svolení</li>
+    <li>Při instalaci či užívání v rozporu s požadavky bude pozáruční servis účtován</li>
+    <li>Obsah manuálu i specifikace se mohou změnit bez předchozího upozornění</li>
+    <li>Schémata v manuálu jsou orientační, rozhoduje skutečné provedení</li>
+  </ul>
+  <div class="dangerbox"><strong>Likvidace:</strong> jednotku, ovládací panel ani příslušenství nevyhazujte do komunálního odpadu. Část materiálů je recyklovatelná, část do komunálního odpadu nepatří. Po skončení životnosti zlikvidujte podle národních předpisů.</div>
+  <figure><img src="foto/08.jpg" loading="lazy" alt="Závěrečná upozornění"><figcaption>Originál: závěrečná ustanovení a upozornění k likvidaci</figcaption></figure>
+</section>
+
+<!-- ============ ČÁST 2: VK8 ============ -->
+<section class="card" id="vk8-uvod">
+  <p class="kicker">Řídicí systém · úvod</p>
+  <h2>Řídicí systém s panelem VK8</h2>
+  <p>Druhý manuál (OV1.2) popisuje instalaci a obsluhu řídicího systému MVHR s dotykovým <strong>panelem VK8</strong>. Panel zobrazuje datum a čas, venkovní podmínky, CO₂, vlhkost, teplotu, PM2.5, VOC a rychlosti obou ventilátorů; umí automatiku podle kvality vzduchu, bypass, ohřívače, boost a WiFi připojení do aplikace Tuya Smart.</p>
+  <div class="warnbox">Panel VK8 není standardní součástí dodávky jednotky — dodává se jako příslušenství.</div>
+  <figure><img src="foto/24.jpg" loading="lazy" alt="Titulní strana manuálu VK8"><figcaption>Originál: titulní strana manuálu řídicího systému (panel VK8)</figcaption></figure>
+</section>
+
+<section class="card" id="vk8-zapojeni">
+  <p class="kicker">Řídicí systém · kapitola 01</p>
+  <h2>Instalace panelu a zapojení</h2>
+  <div class="dangerbox">Před instalací nebo údržbou musí být hlavní napájení vypnuté — hrozí úraz elektrickým proudem. Kabeláž veďte přesně podle požadavků; přijměte ochranná opatření proti selhání systému, úrazu proudem a požáru.</div>
+  <p>Schémata a tabulky níže popisují propojení napájení a řídicího systému. Pro rychlé zapojení standardního modelu použijte svorkovnice <strong>T1-A1</strong> (napájení 230 V~) a <strong>T3-D1</strong> (ovládací panel).</p>
+  <h3>Deska AC/EC Motor Drive Board (VL62)</h3>
+  <div class="tablewrap"><table>
+    <tr><th>Svorka</th><th>Funkce</th></tr>
+    <tr><td>A2 · GND/N/L</td><td>→ svorkovnice T1-A2 (napájení desky)</td></tr>
+    <tr><td>E1 · NO/NC/N</td><td>kabel H → bypassová klapka (řady C / CS / W / TP)</td></tr>
+    <tr><td>E2 · LO/N</td><td>→ interní předehřev (volitelný)</td></tr>
+    <tr><td>E3 · L1/N</td><td>→ interní dohřev (volitelný)</td></tr>
+    <tr><td>E4, E5</td><td>rezerva</td></tr>
+    <tr><td>E6 · L4/N</td><td>napájení přívodního ventilátoru</td></tr>
+    <tr><td>E7 · L5/N</td><td>napájení odtahového ventilátoru</td></tr>
+    <tr><td>E8</td><td>rezerva</td></tr>
+    <tr><td>[Supply]/[GND]/[0-10V]</td><td>řízení otáček EC přívodního ventilátoru</td></tr>
+    <tr><td>[Exhaust]/[GND]/[0-10V]</td><td>řízení otáček EC odtahového ventilátoru</td></tr>
+    <tr><td>D2 · +12/GND/B/A</td><td>→ svorkovnice T3-D2 [DISP] (displej)</td></tr>
+    <tr><td>B2 · Boost</td><td>→ svorkovnice T3-B2 [Boost] X1/X2</td></tr>
+    <tr><td>F · CN7</td><td>→ externí reléová deska ERB-01 [F]</td></tr>
+    <tr><td>CN8</td><td>propojka D–GND pro EC motory</td></tr>
+    <tr><td>C2 · CN9</td><td>→ čidlo teploty a vlhkosti (odtahová strana jednotky)</td></tr>
+    <tr><td>CN14</td><td>→ svorkovnice T3-C2 (12V/G/B/A)</td></tr>
+    <tr><td>CN12/13/15/16/17</td><td>rezerva</td></tr>
+    <tr><td>NTC1 (ID)</td><td>čidlo teploty výfukového vzduchu</td></tr>
+    <tr><td>NTC2 (OD)</td><td>čidlo teploty venkovního vzduchu</td></tr>
+    <tr><td>Switch</td><td>bezpečnostní spínač (řady ES / CS / W)</td></tr>
+  </table></div>
+  <h3>Bypassová klapka</h3>
+  <div class="tablewrap"><table>
+    <tr><th>Typ A</th><td>Motor N ← z desky [H-E1][N]; Motor NO a NC přes mikrospínače → [H-E1][NO]/[NC]</td></tr>
+    <tr><th>Typ B</th><td>L, N ← [A2-CN1][J3]/[J2]; N/L, K1, K2 ← [H-E1][N]/[NO]/[NC]; konektor Com/A/B/C/D → krokový motor (deska Step_Motor_Drv_V1.0)</td></tr>
+  </table></div>
+  <div class="figrow">
+    <figure><img src="foto/25.jpg" loading="lazy" alt="Schéma desky"><figcaption>Originál: schéma zapojení desky AC/EC Motor Drive Board</figcaption></figure>
+    <figure><img src="foto/10.jpg" loading="lazy" alt="Pokračování tabulky desky"><figcaption>Originál: svorky desky a bypassová klapka typ A/B</figcaption></figure>
+  </div>
+  <h3>Svorkovnice (Terminal Block)</h3>
+  <div class="tablewrap"><table>
+    <tr><th>Blok</th><th>Svorky</th><th>Zapojení</th></tr>
+    <tr><td>T1-A1</td><td>GND · N · L</td><td>→ přívod napájení od zákazníka (230 V~)</td></tr>
+    <tr><td>T1-A2</td><td>GND (žl./zel.) · N (modrá) · L (hnědá)</td><td>← z desky [A2][CN1] J1/J2/J3</td></tr>
+    <tr><td>T2-G11</td><td>NO12 · COM12</td><td>→ blokování externího dohřevu (volitelné)</td></tr>
+    <tr><td>T2-G21</td><td>NO11 · COM11</td><td>→ blokování externího předehřevu (volitelné)</td></tr>
+    <tr><td>T2-G31</td><td>NC10 · NO10 · N/0V</td><td>→ externí klapka výfuku: zavřít / otevřít / společný (volitelné)</td></tr>
+    <tr><td>T2-G41</td><td>NC9 · NO9 · N/0V</td><td>→ externí klapka sání: zavřít / otevřít / společný (volitelné)</td></tr>
+    <tr><td>T2-G2</td><td>NO12…N/0V (barvy dle tabulky)</td><td>← z externí reléové desky K9–K12 (volitelné)</td></tr>
+    <tr><td>T3-B1</td><td>X1 · X2</td><td>→ propojovací deska boost tlačítek [B1] (volitelné)</td></tr>
+    <tr><td>T3-B2</td><td>X1 (šedá) · X2 (bílá)</td><td>← z desky [B2][Boost]</td></tr>
+    <tr><td>T3-C1</td><td>12V · G · B · A</td><td>→ propojovací deska čidel [MAIN] (volitelné)</td></tr>
+    <tr><td>T3-C2</td><td>12V (zel.) · G (modrá) · B (hnědá) · A (černá)</td><td>← z desky [C2][CN13]/[CN14]</td></tr>
+    <tr><td>T3-D1</td><td>12V (hnědá) · G (modrá) · B (černá) · A (šedá)</td><td>→ ovládací panel VK8, svorky 1–4</td></tr>
+    <tr><td>T3-D2</td><td>12V (červená) · G (oranž.) · B (fial.) · A (žlutá)</td><td>← z desky [D2] [DISP]</td></tr>
+  </table></div>
+  <h3>Ovládací panel VK8 (svorky D1)</h3>
+  <div class="tablewrap"><table>
+    <tr><th>Pin</th><th>Signál</th><th>Zapojení</th></tr>
+    <tr><td>1</td><td>12V</td><td>← svorkovnice T3-D1 [12V]</td></tr>
+    <tr><td>2</td><td>G</td><td>← svorkovnice T3-D1 [G]</td></tr>
+    <tr><td>3</td><td>B</td><td>← svorkovnice T3-D1 [B]</td></tr>
+    <tr><td>4</td><td>A</td><td>← svorkovnice T3-D1 [A]</td></tr>
+    <tr><td>5</td><td>A</td><td>→ externí RS485 [A] (smart home)</td></tr>
+    <tr><td>6</td><td>B</td><td>→ externí RS485 [B] (smart home)</td></tr>
+  </table></div>
+  <div class="figrow">
+    <figure><img src="foto/22.jpg" loading="lazy" alt="Svorkovnice"><figcaption>Originál: svorkovnice T1/T2/T3 s barvami vodičů</figcaption></figure>
+    <figure><img src="foto/02.jpg" loading="lazy" alt="Svorky C a D, panel VK8"><figcaption>Originál: svorky C1/C2/D1/D2 a panel VK8 (vč. RS485 pro smart home)</figcaption></figure>
+  </div>
+</section>
+
+<section class="card" id="vk8-desky">
+  <p class="kicker">Řídicí systém · externí desky</p>
+  <h2>Externí desky a čidla</h2>
+  <h3>Propojovací deska čidel (ESCB-CRT-01)</h3>
+  <ul>
+    <li>Vstup C1 (MAIN 12V/GND/A/B) ← svorkovnice T3-C1</li>
+    <li>Výstupy C11 na pozicích 1# až 9# → jednotlivé desky čidel (12V/GND/A/B)</li>
+    <li>K systému lze připojit až 8 externích čidel (CO₂/RH/teplota — ESB-CRT-01, RH/teplota — ESB-RT-01)</li>
+  </ul>
+  <h3>Propojovací deska boost tlačítek (EBCB-01)</h3>
+  <ul>
+    <li>Vstup B1 (X1/X2) ← svorkovnice T3-B1 [Boost]</li>
+    <li>Pozice 1# až 10# (X1/X2) → externí boost tlačítka EBS-01</li>
+  </ul>
+  <h3>Externí reléová deska (ERB-01)</h3>
+  <ul>
+    <li>A2 (N/0V · L/V+) ← z desky [A2-CN1] J2/J3</li>
+    <li>F (D/C/B/A/12V) ← z desky [F][CN7]</li>
+    <li>Reléové výstupy K9–K12 (N/0V, NO9/NC9 … NO12/NC12, COM11, COM12) → svorkovnice T2-G2</li>
+    <li>Slouží k připojení externích klapek (EEAD-01, až 2) a externích ohřívačů (EEH-01, až 2)</li>
+  </ul>
+  <div class="figrow">
+    <figure><img src="foto/06.jpg" loading="lazy" alt="Deska čidel"><figcaption>Originál: propojovací deska čidel a deska čidla</figcaption></figure>
+    <figure><img src="foto/13.jpg" loading="lazy" alt="Boost a reléová deska"><figcaption>Originál: deska boost tlačítek a reléová deska</figcaption></figure>
+  </div>
+</section>
+
+<section class="card" id="vk8-home">
+  <p class="kicker">Řídicí systém · kapitola 02</p>
+  <h2>Hlavní obrazovka panelu</h2>
+  <p>Hlavní obrazovka (Home) zobrazuje:</p>
+  <ul>
+    <li><strong>Datum, den a čas</strong> — nastavuje se na stránce <em>Datum a čas</em></li>
+    <li><strong>Outdoor</strong> — teplota nasávaného venkovního vzduchu z čidla jednotky; venkovní vlhkost a ikona počasí z cloudu</li>
+    <li><strong>Ikona WiFi</strong> — stav spárování s cloudem a aplikací</li>
+    <li><strong>Defrosting</strong> — právě běží odmrazování (spouštěcí teplotu nastavíte v <em>Dalších funkcích</em>)</li>
+    <li><strong>Boosting</strong> — právě běží intenzivní větrání (délku nastavíte v <em>Dalších funkcích</em>)</li>
+    <li><strong>Filter Alert</strong> — vypršel časovač čištění/výměny filtru ze <em>Správy filtrů</em></li>
+    <li><strong>Supply / Extract</strong> — aktuální stupeň přívodního a odtahového ventilátoru; při zapnutém režimu <em>Fan Separation</em> lze v ručním režimu nastavovat každý ventilátor zvlášť</li>
+    <li><strong>CO₂ [ppm]</strong> — z čidla panelu (při externích čidlech nejvyšší naměřená hodnota) + barevný ukazatel Excellent/Good/Bad (zelená/žlutá/červená)</li>
+    <li><strong>Vlhkost [%]</strong> — odtahový vzduch z čidla jednotky (při externích čidlech nejvyšší hodnota)</li>
+    <li><strong>Teplota [°C]</strong> — odtahový vzduch z čidla jednotky</li>
+    <li><strong>PM2.5 [µg/m³]</strong> a <strong>VOCs</strong> — z čidel panelu</li>
+  </ul>
+  <figure><img src="foto/26.jpg" loading="lazy" alt="Hlavní obrazovka"><figcaption>Originál: hlavní obrazovka panelu VK8 (str. s kap. 02)</figcaption></figure>
+</section>
+
+<section class="card" id="vk8-ovladani">
+  <p class="kicker">Řídicí systém · ovládání</p>
+  <h2>Ovládací prvky (spodní lišta)</h2>
+  <ul>
+    <li><kbd>OFF</kbd> — hlavní vypínač větrání</li>
+    <li><kbd>Auto</kbd> — přepínač režimů <em>Manual / Sleep / Auto</em>; automatika se řídí parametry PM2.5, CO₂, VOC a vlhkosti (viz <a href="#vk8-automatika">automatika</a>)</li>
+    <li><kbd>Fan</kbd> — v ručním režimu nastavuje stupeň přívodního i odtahového ventilátoru současně</li>
+    <li><kbd>Boost</kbd> — zapnutí/vypnutí intenzivního větrání; spustí se i externím boost tlačítkem. Systém běží na maximum po nastavenou dobu a pak se vrátí do normálního režimu</li>
+    <li><kbd>Bypass</kbd> — volba automatiky <em>Outdoor Auto Mode</em> (venkovní komfortní rozsah) nebo <em>Indoor Auto Mode</em> (vnitřní komfortní bod); ručně lze klapku přepnout <em>Bypass Valve ON/OFF</em>, případně <em>Auto</em>. U modelů bez klapky je k dispozici <em>Freecooling ON/OFF/Auto</em> (u něj funguje jen Outdoor Auto Mode)</li>
+    <li><kbd>Heater</kbd> — ruční zapnutí dohřevu (<em>Postheat</em>) nebo předehřevu (<em>Preheat</em>); ohřívač lze zapnout jen při běžícím přívodním ventilátoru</li>
+    <li><kbd>Child Lock</kbd> — dlouhý stisk zamkne/odemkne obrazovku</li>
+    <li><kbd>Setting</kbd> — dlouhý stisk otevře nastavení</li>
+  </ul>
+  <h3>Menu Nastavení</h3>
+  <p>Dlaždice: <em>WiFi</em> (konfigurace sítě) · <em>Date</em> (datum a čas) · <em>Timer</em> (časovač) · <em>Backlight</em> (podsvícení) · <em>RS485</em> (Modbus) · <em>Other</em> (další funkce) · <em>Filter</em> (správa filtrů) · <em>PM2.5</em> · <em>CO₂</em> · <em>VOCs</em> · <em>Humidity</em> · <em>Sensor</em> (data čidel).</p>
+  <figure><img src="foto/15.jpg" loading="lazy" alt="Ovládací prvky a nastavení"><figcaption>Originál: ovládací prvky, režimy a menu Nastavení</figcaption></figure>
+</section>
+
+<section class="card" id="vk8-nastaveni">
+  <p class="kicker">Řídicí systém · nastavení</p>
+  <h2>WiFi, datum a čas, časovač, podsvícení</h2>
+  <h3>Připojení k síti (aplikace Tuya Smart)</h3>
+  <ul>
+    <li>Stáhněte aplikaci <strong>Tuya Smart</strong>, na telefonu zapněte WiFi i Bluetooth</li>
+    <li>V aplikaci se zaregistrujte a zvolte <em>Přidat zařízení</em></li>
+    <li>Na panelu dlouze stiskněte <kbd>Network</kbd> — párování začne, jakmile ikona WiFi bliká</li>
+    <li>V aplikaci stiskněte <em>Add</em>, jakmile se jednotka objeví nahoře; případně vyberte ručně <em>Small Home Appliances → Ventilation System (BLE+Wi-Fi)</em></li>
+    <li>Zadejte jméno a heslo domácí WiFi (2,4 GHz)</li>
+    <li>Podle stavu ikony WiFi na panelu zvolte v aplikaci <em>Blink Slowly</em> / <em>Blink Quickly</em></li>
+    <li>Po úspěšném přidání přestane ikona WiFi blikat a zůstane plná</li>
+  </ul>
+  <h3>Datum a čas</h3>
+  <ul>
+    <li>Vyberte aktuální den v týdnu (Po–Ne)</li>
+    <li>Šipkami nastavte datum <em>D/M/Yr</em> a čas <em>H/Min/S</em></li>
+    <li>Uložte tlačítkem <kbd>Save</kbd></li>
+  </ul>
+  <h3>Časovač (Timing Parameter)</h3>
+  <ul>
+    <li>Pro každý den v týdnu lze nastavit čas zapnutí (<em>Boot time</em>, např. 08:00) a vypnutí (<em>Shutdown time</em>, např. 23:00)</li>
+    <li>Šipkami nastavíte hodnoty; přepínačem vedle šipek se daný časovač zapíná/vypíná</li>
+    <li>Uložte tlačítkem <kbd>Save</kbd></li>
+  </ul>
+  <h3>Podsvícení a zhasínání (Backlight/Off Screen)</h3>
+  <ul>
+    <li><em>Backlight brightness</em> (např. 50 %) — jas při aktivním ovládání</li>
+    <li><em>Screen off brightness</em> (např. 18 %) — jas v klidu</li>
+    <li><em>Turn off screen time</em> (např. 69 s) — za jak dlouho bez dotyku se aktivuje spořič</li>
+  </ul>
+  <div class="figrow">
+    <figure><img src="foto/11.jpg" loading="lazy" alt="WiFi a datum"><figcaption>Originál: párování s Tuya Smart a nastavení data/času</figcaption></figure>
+    <figure><img src="foto/21.jpg" loading="lazy" alt="Časovač a podsvícení"><figcaption>Originál: časovač, podsvícení a začátek Dalších funkcí</figcaption></figure>
+  </div>
+</section>
+
+<section class="card" id="vk8-funkce">
+  <p class="kicker">Řídicí systém · další funkce</p>
+  <h2>Další funkce a správa filtrů</h2>
+  <h3>Other Features</h3>
+  <ul>
+    <li><strong>Screensaver</strong> — zapnutí/vypnutí spořiče obrazovky</li>
+    <li><strong>Fan Separation</strong> — nezávislé nastavení obou ventilátorů (ruční vyvážení obousměrných toků, přetlak/podtlak)</li>
+    <li><strong>Defrost T</strong> (např. −2 °C, rozsah −5 až +3 °C) — spouštěcí teplota odmrazování. Odmrazování začne, když teplota výfuku ven klesne pod nastavenou mez, a skončí, když stoupne nad teplotu odtahu z interiéru minus 3 °C (nejpozději po 15 minutách). Interval mezi cykly je 45 minut. Při odmrazování běží odtahový ventilátor na stupeň 4 (volitelně <em>Defrost Fan Speed 5</em>) a přívodní stojí; po dokončení se systém vrátí do normálního chodu</li>
+    <li><strong>Boost Time</strong> (např. 15 min) — délka intenzivního větrání po stisku <kbd>Boost</kbd> na panelu nebo externího tlačítka; po uplynutí se systém vrátí do normálního chodu</li>
+    <li><strong>Outdoor Auto Range</strong> T1/T2 (např. 13 °C / 26 °C; T1: +10…+20 °C, T2: +20…+40 °C) — venkovní komfortní rozsah pro automatiku bypassu. Klapka se otevře, když je odtah z interiéru alespoň o 3 °C teplejší než venkovní vzduch a venkovní teplota je mezi T1 a T2; zavře se, když rozdíl klesne pod 3 °C nebo venkovní teplota rozsah opustí</li>
+    <li><strong>Indoor Auto Set</strong> T3 (např. 23 °C; rozsah +15…+40 °C) — vnitřní komfortní bod. Klapka se otevírá/zavírá podle vztahu teploty odtahu, venkovní teploty a T3 ± 3 °C tak, aby se interiér držel u nastaveného bodu</li>
+    <li>Uložení tlačítkem <kbd>Save</kbd>; <kbd>Default</kbd> vrátí tovární hodnotu vybrané položky</li>
+  </ul>
+  <h3>Správa filtrů (Filter Management)</h3>
+  <p>Pro tři typy filtrů běží nezávislá počítadla provozních hodin; po dosažení limitu se na hlavní obrazovce objeví <em>Filter Alert</em>:</p>
+  <div class="tablewrap"><table>
+    <tr><th>Filtr</th><th>Výchozí limit (Initial Time)</th><th>Odpovídá</th></tr>
+    <tr><td>G-Filter (G4)</td><td>2190 h</td><td>~3 měsíce</td></tr>
+    <tr><td>F-Filter (F8)</td><td>4380 h</td><td>~6 měsíců</td></tr>
+    <tr><td>H-Filter (H13/H11)</td><td>8760 h</td><td>~12 měsíců</td></tr>
+  </table></div>
+  <ul>
+    <li>Šipkami lze limity upravit; <em>Already Working Time</em> ukazuje naběhané hodiny</li>
+    <li>Po vyčištění/výměně filtru stiskněte <kbd>Reset</kbd> — počítadlo se vrátí na 000</li>
+    <li><kbd>Default</kbd> vrátí tovární limit; stiskem názvu typu filtru sloupec skryjete, pokud filtr není osazen</li>
+    <li>Uložte tlačítkem <kbd>Save</kbd></li>
+  </ul>
+  <div class="figrow">
+    <figure><img src="foto/01.jpg" loading="lazy" alt="Další funkce a správa filtrů"><figcaption>Originál: Boost, Outdoor/Indoor Auto a Správa filtrů</figcaption></figure>
+    <figure><img src="foto/17.jpg" loading="lazy" alt="Správa filtrů a PM2.5"><figcaption>Originál: Správa filtrů (obrazovka) a parametry PM2.5</figcaption></figure>
+  </div>
+</section>
+
+<section class="card" id="vk8-automatika">
+  <p class="kicker">Řídicí systém · automatika</p>
+  <h2>Parametry automatiky: PM2.5, CO₂, VOC, vlhkost</h2>
+  <p>V režimu <strong>Auto</strong> řídí systém otáčky ventilátorů podle aktuálních hodnot z čidel. Pro každou veličinu je pět prahů, které definují stupně ventilátoru <em>stop</em>, 1, 2, 3, 4, 5 — jakmile hodnota klesne pod nejnižší práh, větrání se zastaví. Každou veličinu lze z automatiky vyřadit přepínačem vpravo nahoře na její stránce. Hodnoty se upravují tlačítky <kbd>+</kbd>/<kbd>−</kbd>, <kbd>Default</kbd> vrací tovární nastavení, <kbd>Save</kbd> ukládá.</p>
+  <div class="tablewrap"><table>
+    <tr><th>Veličina</th><th>Zdroj dat</th><th>Tovární prahy (stupeň 1–5)</th></tr>
+    <tr><td>PM2.5 [µg/m³]</td><td>čidlo panelu</td><td>035 · 075 · 115 · 150 · 250</td></tr>
+    <tr><td>CO₂ [ppm]</td><td>čidlo panelu; při externích čidlech nejvyšší hodnota</td><td>400 · 1000 · 1500 · 2500 · 3500</td></tr>
+    <tr><td>VOC</td><td>čidlo panelu</td><td>0,50 · 1,00 · 1,60 · 2,30 · 3,50</td></tr>
+    <tr><td>Vlhkost RH [%]</td><td>čidlo odtahu v jednotce; při externích čidlech nejvyšší hodnota</td><td>55 · 60 · 70 · 80 · 90</td></tr>
+  </table></div>
+  <figure><img src="foto/20.jpg" loading="lazy" alt="CO2, VOC a RH parametry"><figcaption>Originál: obrazovky CO₂ / VOCs / RH Control Parameters</figcaption></figure>
+</section>
+
+<section class="card" id="vk8-modbus">
+  <p class="kicker">Řídicí systém · integrace</p>
+  <h2>Modbus RS485 protokol (V1.0.14)</h2>
+  <p>Panel VK8 lze napojit na nadřazený systém (smart home, Home Assistant apod.) přes <strong>Modbus RTU po RS485</strong>. Podklad: dokument <a href="vk8-modbus-protokol.pdf">VK8 External Modbus Protocol V1.0.14 (originál PDF)</a>.</p>
+  <h3>Zapojení a nastavení</h3>
+  <ul>
+    <li><strong>Zapojení:</strong> vodiče na svorky <strong>5 (A)</strong> a <strong>6 (B)</strong> svorkovnice na zadní straně panelu (viz <a href="#vk8-zapojeni">tabulka svorek D1</a>)</li>
+    <li><strong>Adresa zařízení:</strong> na panelu <em>Setting → RS485 → Modbus</em>, rozsah 1–254 (výchozí 001); zapíná se přepínačem <em>Modbus Auxiliary Engine</em></li>
+    <li><strong>Komunikace:</strong> RS485, Modbus RTU</li>
+    <li><strong>Sériová linka:</strong> 9600 Bd, 8 datových bitů, 1 stop bit, bez parity</li>
+    <li><strong>Podporované funkce:</strong> 0x03 (čtení registrů), 0x06 (zápis jednoho registru), 0x10 (zápis více registrů)</li>
+  </ul>
+  <div class="warnbox"><strong>Pozor:</strong> zápisové povely přes externí RS485 vykonávejte jen v <em>ručním režimu</em> jednotky — jinak nemusí být příkazy provedeny.</div>
+  <h3>Mapa registrů (adresy dekadicky)</h3>
+  <div class="tablewrap"><table>
+    <tr><th>DEC</th><th>Typ</th><th>Význam</th><th>Hodnoty</th></tr>
+    <tr><td>00</td><td>R/W</td><td>Stav zařízení</td><td>0 = vypnuto · 1 = zapnuto</td></tr>
+    <tr><td>01</td><td>R/W</td><td>Provozní režim</td><td>0 = Auto · 1 = Manual · 2 = Sleep</td></tr>
+    <tr><td>02</td><td>R/W</td><td>Stupeň přívodního ventilátoru</td><td>1–5</td></tr>
+    <tr><td>03</td><td>R/W</td><td>Stupeň odtahového ventilátoru</td><td>1–5</td></tr>
+    <tr><td>04</td><td>R/W</td><td>Režim automatiky bypassu</td><td>0 = Indoor Auto · 1 = Outdoor Auto</td></tr>
+    <tr><td>05</td><td>R/W</td><td>Ovládání bypassové klapky</td><td>0 = ručně zavřeno · 1 = ručně otevřeno · 2 = Auto</td></tr>
+    <tr><td>06</td><td>R/W</td><td>Externí klapka (shutter)</td><td>0 = zavřena · 1 = otevřena · 2 = Auto</td></tr>
+    <tr><td>07</td><td>R/W</td><td>Dohřev (Postheat)</td><td>0 = vyp · 1 = zap</td></tr>
+    <tr><td>08</td><td>R/W</td><td>Předehřev (Preheat)</td><td>0 = vyp · 1 = zap</td></tr>
+    <tr><td>09</td><td>R/W</td><td>Hodiny provozu H-filtru</td><td>0–999 h · zápis 0xAA = reset</td></tr>
+    <tr><td>10</td><td>R/W</td><td>Hodiny provozu F-filtru</td><td>0–999 h · zápis 0xAA = reset</td></tr>
+    <tr><td>11</td><td>R/W</td><td>Hodiny provozu G-filtru</td><td>0–999 h · zápis 0xAA = reset</td></tr>
+    <tr><td>12</td><td>R/W</td><td>Boost</td><td>0 = stop · 1 = start</td></tr>
+    <tr><td>13</td><td>R/W</td><td>Fan Separation (nezávislé ventilátory)</td><td>0 = vyp · 1 = zap</td></tr>
+    <tr><td>14</td><td>R/W</td><td>Free Cooling</td><td>0 = vyp · 1 = zap</td></tr>
+    <tr><td>15</td><td>R</td><td>Teplota odtahu (interiér)</td><td>−10 až 50 °C</td></tr>
+    <tr><td>16</td><td>R</td><td>Vlhkost odtahu (interiér)</td><td>0–99 %</td></tr>
+    <tr><td>17</td><td>R</td><td>PM2.5 (čidlo panelu)</td><td>0–999 µg/m³</td></tr>
+    <tr><td>18</td><td>R</td><td>CO₂ (čidlo panelu)</td><td>400–5000 ppm</td></tr>
+    <tr><td>19</td><td>R</td><td>VOC (čidlo panelu)</td><td>úroveň 1–4</td></tr>
+    <tr><td>20</td><td>R</td><td>Odmrazování</td><td>0 = neběží · 1 = běží</td></tr>
+    <tr><td>21</td><td>R</td><td>Teplota výfuku ven</td><td>−10 až 50 °C · 0x7FFF = chyba/chybí čidlo</td></tr>
+    <tr><td>22</td><td>R</td><td>Venkovní teplota</td><td>−10 až 50 °C · 0x7FFF = chyba/chybí čidlo</td></tr>
+    <tr><td>23–31</td><td>R</td><td>Teplota externích čidel Onsite0–8</td><td>−10 až 50 °C · 0x7FFF = chyba/chybí čidlo</td></tr>
+    <tr><td>32–40</td><td>R</td><td>Vlhkost externích čidel Onsite0–8</td><td>0–100 % · 0x00FF = chyba/chybí čidlo</td></tr>
+    <tr><td>41–49</td><td>R</td><td>CO₂ externích čidel Onsite0–8</td><td>400–5000 ppm · 0xFFFF = chyba/chybí čidlo</td></tr>
+  </table></div>
+</section>
+
+<footer>
+  <p>Neoficiální český překlad pro vlastní potřebu, pořízený z fotografií tištěných manuálů E-VIPO (jednotka MVHR řady TP, user manual v3.0; řídicí systém VK8, manuál OV1.2) a PDF dokumentu VK8 External Modbus Protocol V1.0.14. Rozhoduje originál — fotografie u každé kapitoly, PDF ke stažení v kapitole Modbus. Přeloženo 31. 7. 2026.</p>
+</footer>
+
+</div></div></main>
+
+<div class="lightbox" id="lightbox"><img src="" alt=""></div>
+<script>
+(function(){
+  const btn=document.getElementById('themeToggle');
+  const root=document.documentElement;
+  const saved=localStorage.getItem('theme');
+  if(saved){root.dataset.theme=saved}
+  function label(){
+    const dark=root.dataset.theme==='dark'||(!root.dataset.theme&&matchMedia('(prefers-color-scheme:dark)').matches);
+    btn.textContent=dark?'Světlý režim':'Tmavý režim';
+  }
+  btn.addEventListener('click',()=>{
+    const dark=root.dataset.theme==='dark'||(!root.dataset.theme&&matchMedia('(prefers-color-scheme:dark)').matches);
+    root.dataset.theme=dark?'light':'dark';
+    localStorage.setItem('theme',root.dataset.theme);
+    label();
+  });
+  label();
+  const lb=document.getElementById('lightbox'), lbImg=lb.querySelector('img');
+  document.querySelectorAll('figure img').forEach(img=>{
+    img.addEventListener('click',()=>{lbImg.src=img.src;lb.classList.add('open')});
+  });
+  lb.addEventListener('click',()=>{lb.classList.remove('open');lbImg.src=''});
+})();
+</script>
+</body>
+</html>

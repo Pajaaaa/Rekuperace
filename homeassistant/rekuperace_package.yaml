@@ -1,0 +1,111 @@
+# =====================================================================
+# Home Assistant balíček pro rekuperaci E-VIPO (ESPHome můstek VK8)
+# ---------------------------------------------------------------------
+# Nakopíruj do config/packages/ (homeassistant: packages: !include_dir_named packages)
+# Entity ID odpovídají ESPHome zařízení "rekuperace" — po prvním
+# připojení zkontroluj přesné názvy v Nastavení → Zařízení a služby.
+#
+# DŮLEŽITÉ: panel VK8 vykonává zápisy přes RS485 jen v ručním režimu.
+# Skripty níže proto před povelem vždy přepnou režim na "Ruční".
+# =====================================================================
+
+script:
+  rekuperace_boost_start:
+    alias: "Rekuperace: spustit boost"
+    icon: mdi:weather-windy
+    sequence:
+      - service: select.select_option
+        target:
+          entity_id: select.rekuperace_rezim
+        data:
+          option: "Ruční"
+      - delay: "00:00:02"
+      - service: switch.turn_on
+        target:
+          entity_id: switch.rekuperace_boost
+
+  rekuperace_boost_stop:
+    alias: "Rekuperace: ukončit boost"
+    icon: mdi:weather-windy
+    sequence:
+      - service: switch.turn_off
+        target:
+          entity_id: switch.rekuperace_boost
+
+  rekuperace_rucni_stupen:
+    alias: "Rekuperace: ruční režim a stupeň"
+    description: "Přepne do ručního režimu a nastaví oba ventilátory na zadaný stupeň (1–5)."
+    icon: mdi:fan
+    fields:
+      stupen:
+        description: "Stupeň ventilátorů 1–5"
+        example: 3
+    sequence:
+      - service: select.select_option
+        target:
+          entity_id: select.rekuperace_rezim
+        data:
+          option: "Ruční"
+      - delay: "00:00:02"
+      - service: number.set_value
+        target:
+          entity_id: number.rekuperace_privod_stupen
+        data:
+          value: "{{ stupen }}"
+      - service: number.set_value
+        target:
+          entity_id: number.rekuperace_odtah_stupen
+        data:
+          value: "{{ stupen }}"
+
+  rekuperace_zpet_do_auto:
+    alias: "Rekuperace: zpět do automatiky"
+    icon: mdi:refresh-auto
+    sequence:
+      - service: select.select_option
+        target:
+          entity_id: select.rekuperace_rezim
+        data:
+          option: "Auto"
+
+# ---------------------------------------------------------------------
+# Ukázkové automatizace (uprav entity podle svých čidel)
+# ---------------------------------------------------------------------
+automation:
+  # Sprcha: vlhkost v koupelně vysoko → boost; po poklesu zpět do auto
+  - id: rekuperace_boost_koupelna
+    alias: "Rekuperace: boost při sprchování"
+    initial_state: false   # zapni až po doplnění reálného čidla
+    trigger:
+      - platform: numeric_state
+        entity_id: sensor.koupelna_vlhkost   # <-- doplň své čidlo
+        above: 75
+        for: "00:02:00"
+    action:
+      - service: script.rekuperace_boost_start
+  - id: rekuperace_boost_koupelna_konec
+    alias: "Rekuperace: konec boostu po vyvětrání"
+    initial_state: false
+    trigger:
+      - platform: numeric_state
+        entity_id: sensor.koupelna_vlhkost   # <-- doplň své čidlo
+        below: 60
+        for: "00:05:00"
+    action:
+      - service: script.rekuperace_boost_stop
+      - service: script.rekuperace_zpet_do_auto
+
+  # Upozornění na zanesený filtr (limit G4 = 2190 h ≈ 3 měsíce)
+  - id: rekuperace_filtr_upozorneni
+    alias: "Rekuperace: G-filtr po limitu"
+    trigger:
+      - platform: numeric_state
+        entity_id: sensor.rekuperace_g_filtr_hodiny
+        above: 2190
+    action:
+      - service: persistent_notification.create
+        data:
+          title: "Rekuperace — filtr"
+          message: >-
+            G4 filtry mají naběháno {{ states('sensor.rekuperace_g_filtr_hodiny') }} h.
+            Vyčisti/vyměň je a stiskni Reset G-filtru.

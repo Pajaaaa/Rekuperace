@@ -1,0 +1,48 @@
+# Lovelace karta pro rekuperaci (vlož jako "Manual card" / YAML editor)
+type: vertical-stack
+cards:
+  - type: entities
+    title: Rekuperace
+    show_header_toggle: false
+    entities:
+      - entity: switch.rekuperace_zapnuto
+        name: Zapnuto
+      - entity: select.rekuperace_rezim
+        name: Režim
+      - entity: number.rekuperace_privod_stupen
+        name: Přívod
+      - entity: number.rekuperace_odtah_stupen
+        name: Odtah
+      - entity: switch.rekuperace_boost
+        name: Boost
+      - entity: select.rekuperace_bypass_klapka
+        name: Bypass
+      - entity: binary_sensor.rekuperace_odmrazovani
+        name: Odmrazování
+  - type: glance
+    title: Vzduch
+    columns: 3
+    entities:
+      - entity: sensor.rekuperace_co2
+        name: CO₂
+      - entity: sensor.rekuperace_pm2_5
+        name: PM2.5
+      - entity: sensor.rekuperace_voc_uroven
+        name: VOC
+      - entity: sensor.rekuperace_teplota_odtah_interier
+        name: Interiér
+      - entity: sensor.rekuperace_vlhkost_odtah_interier
+        name: Vlhkost
+      - entity: sensor.rekuperace_venkovni_teplota
+        name: Venku
+  - type: entities
+    title: Filtry
+    entities:
+      - entity: sensor.rekuperace_g_filtr_hodiny
+        name: G4 (limit 2190 h)
+      - entity: sensor.rekuperace_f_filtr_hodiny
+        name: F8 (limit 4380 h)
+      - entity: button.rekuperace_reset_g_filtru
+        name: Reset G4
+      - entity: button.rekuperace_reset_f_filtru
+        name: Reset F8
