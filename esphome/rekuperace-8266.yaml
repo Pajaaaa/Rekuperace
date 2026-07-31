@@ -1,8 +1,12 @@
 # =====================================================================
-# Rekuperace E-VIPO MVHR — Modbus můstek, varianta ESP32 (DevKit)
+# Rekuperace E-VIPO MVHR — Modbus můstek, varianta ESP8266 (D1 mini)
 # ---------------------------------------------------------------------
 # Společná logika (Modbus, entity) je v common.yaml. Tady jen deska
-# a piny. Zapojení: docs/zapojeni-esp32-rs485.svg
+# a piny. Zapojení: docs/zapojeni-esp8266-rs485.svg
+#
+# ESP8266 nemá volný hardwarový UART — ESPHome na těchto pinech
+# automaticky použije softwarový UART, který na 9600 Bd běží spolehlivě.
+# Nepoužívej boot-strapping piny GPIO0 (D3), GPIO2 (D4), GPIO15 (D8)!
 #
 # Panel VK8: Setting → RS485 → Modbus → zapnout "Modbus Auxiliary
 # Engine"; adresa panelu musí sedět se `modbus_address` níže.
@@ -11,19 +15,17 @@
 substitutions:
   name: rekuperace
   friendly_name: Rekuperace
-  tx_pin: GPIO17    # → DI převodníku
-  rx_pin: GPIO16    # ← RO převodníku
+  tx_pin: GPIO4     # D2 na D1 mini → DI převodníku
+  rx_pin: GPIO5     # D1 na D1 mini ← RO převodníku
   modbus_address: "1"
 
-esp32:
-  board: esp32dev
-  framework:
-    type: esp-idf
+esp8266:
+  board: d1_mini
 
 packages:
   common: !include common.yaml
 
 # Převodník bez automatického řízení směru (MAX485: spojené DE+RE):
-# odkomentuj a přiveď DE+RE na GPIO4
+# odkomentuj a přiveď DE+RE na D5 (GPIO14)
 # modbus:
-#   flow_control_pin: GPIO4
+#   flow_control_pin: GPIO14

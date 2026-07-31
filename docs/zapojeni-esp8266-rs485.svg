@@ -1,0 +1,120 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 480" font-family="Segoe UI, system-ui, Arial, sans-serif">
+  <defs>
+    <style>
+      .box{fill:#ffffff;stroke:#9fb0ba;stroke-width:1.5;rx:10}
+      .title{font-size:14px;font-weight:600;fill:#16232b}
+      .pin{font-size:12.5px;fill:#3a4b55}
+      .pinR{font-size:12.5px;fill:#3a4b55;text-anchor:end}
+      .lbl{font-size:11.5px;fill:#5d6f79}
+      .note{font-size:11px;fill:#8a5a1a;font-style:italic}
+      .dot{fill:#5d6f79}
+    </style>
+  </defs>
+  <rect x="0" y="0" width="960" height="480" rx="14" fill="#f4f8fa" stroke="#d7e0e4"/>
+  <text x="24" y="34" font-size="16" font-weight="700" fill="#16232b">Zapojení: panel VK8 → RS485 převodník → ESP8266 (D1 mini)</text>
+
+  <!-- Panel VK8 -->
+  <rect class="box" x="30" y="70" width="215" height="300" rx="10"/>
+  <text class="title" x="45" y="96">Panel VK8</text>
+  <text class="lbl" x="45" y="114">zadní svorkovnice</text>
+  <g>
+    <text class="pin" x="45" y="149">1 · 12 V</text>
+    <text class="pin" x="45" y="179">2 · GND (G)</text>
+    <text class="pin" x="45" y="209">3 · B (interní sběrnice)</text>
+    <text class="pin" x="45" y="239">4 · A (interní sběrnice)</text>
+    <text class="pin" x="45" y="269">5 · A — externí RS485</text>
+    <text class="pin" x="45" y="299">6 · B — externí RS485</text>
+    <circle class="dot" cx="245" cy="145" r="3"/>
+    <circle class="dot" cx="245" cy="175" r="3"/>
+    <circle class="dot" cx="245" cy="265" r="3"/>
+    <circle class="dot" cx="245" cy="295" r="3"/>
+  </g>
+
+  <!-- RS485 module -->
+  <rect class="box" x="430" y="70" width="185" height="220" rx="10"/>
+  <text class="title" x="445" y="96">RS485 převodník</text>
+  <text class="lbl" x="445" y="114">MAX3485 / modul s auto-směrem</text>
+  <g>
+    <text class="pin" x="445" y="149">A (D+)</text>
+    <text class="pin" x="445" y="179">B (D−)</text>
+    <text class="pin" x="445" y="209">GND</text>
+    <circle class="dot" cx="430" cy="145" r="3"/>
+    <circle class="dot" cx="430" cy="175" r="3"/>
+    <circle class="dot" cx="430" cy="205" r="3"/>
+    <text class="pinR" x="600" y="149">DI</text>
+    <text class="pinR" x="600" y="179">RO</text>
+    <text class="pinR" x="600" y="209">DE+RE</text>
+    <text class="pinR" x="600" y="239">VCC</text>
+    <circle class="dot" cx="615" cy="145" r="3"/>
+    <circle class="dot" cx="615" cy="175" r="3"/>
+    <circle class="dot" cx="615" cy="205" r="3"/>
+    <circle class="dot" cx="615" cy="235" r="3"/>
+  </g>
+
+  <!-- ESP32 -->
+  <rect class="box" x="730" y="70" width="200" height="300" rx="10"/>
+  <text class="title" x="745" y="96">ESP8266 — Wemos D1 mini</text>
+  <g>
+    <text class="pin" x="745" y="149">D2 · GPIO4 (TX)</text>
+    <text class="pin" x="745" y="179">D1 · GPIO5 (RX)</text>
+    <text class="pin" x="745" y="209">D5 · GPIO14 (flow)</text>
+    <text class="pin" x="745" y="239">3V3</text>
+    <text class="pin" x="745" y="299">GND</text>
+    <text class="pin" x="745" y="329">5V</text>
+    <circle class="dot" cx="730" cy="145" r="3"/>
+    <circle class="dot" cx="730" cy="175" r="3"/>
+    <circle class="dot" cx="730" cy="205" r="3"/>
+    <circle class="dot" cx="730" cy="235" r="3"/>
+    <circle class="dot" cx="730" cy="295" r="3"/>
+    <circle class="dot" cx="730" cy="325" r="3"/>
+  </g>
+
+  <!-- Step-down -->
+  <rect class="box" x="430" y="340" width="185" height="90" rx="10"/>
+  <text class="title" x="445" y="366">Step-down</text>
+  <text class="lbl" x="445" y="384">12 V → 5 V (MP1584)</text>
+  <g>
+    <text class="pin" x="445" y="412">IN+ / IN−</text>
+    <text class="pinR" x="600" y="412">OUT+ / OUT−</text>
+    <circle class="dot" cx="430" cy="398" r="3"/>
+    <circle class="dot" cx="430" cy="418" r="3"/>
+    <circle class="dot" cx="615" cy="398" r="3"/>
+    <circle class="dot" cx="615" cy="418" r="3"/>
+  </g>
+
+  <!-- Wires -->
+  <!-- A: pin5 -> RS485 A -->
+  <polyline points="245,265 340,265 340,145 430,145" fill="none" stroke="#e07b39" stroke-width="2.5"/>
+  <text class="lbl" x="348" y="140" fill="#b25a1e">A</text>
+  <!-- B: pin6 -> RS485 B -->
+  <polyline points="245,295 365,295 365,175 430,175" fill="none" stroke="#2f7fd1" stroke-width="2.5"/>
+  <text class="lbl" x="373" y="170" fill="#215e9e">B</text>
+  <!-- 12V: pin1 -> stepdown IN+ -->
+  <polyline points="245,145 300,145 300,398 430,398" fill="none" stroke="#c0413c" stroke-width="2.5"/>
+  <text class="lbl" x="306" y="392" fill="#c0413c">12 V</text>
+  <!-- GND: pin2 -> stepdown IN- + RS485 GND -->
+  <polyline points="245,175 320,175 320,418 430,418" fill="none" stroke="#6a7a84" stroke-width="2.5"/>
+  <polyline points="320,205 430,205" fill="none" stroke="#6a7a84" stroke-width="2.5"/>
+  <circle cx="320" cy="205" r="3.5" fill="#6a7a84"/>
+  <text class="lbl" x="326" y="430">GND (společná zem)</text>
+  <!-- 5V: stepdown OUT+ -> ESP VIN -->
+  <polyline points="615,398 700,398 700,325 730,325" fill="none" stroke="#c0413c" stroke-width="2.5" stroke-dasharray="7 4"/>
+  <text class="lbl" x="640" y="392" fill="#c0413c">5 V</text>
+  <!-- GND: stepdown OUT- -> ESP GND -->
+  <polyline points="615,418 715,418 715,295 730,295" fill="none" stroke="#6a7a84" stroke-width="2.5"/>
+  <!-- DI <- GPIO17 -->
+  <polyline points="615,145 730,145" fill="none" stroke="#2e9e6b" stroke-width="2.5"/>
+  <!-- RO -> GPIO16 -->
+  <polyline points="615,175 730,175" fill="none" stroke="#7a5fc0" stroke-width="2.5"/>
+  <!-- DE+RE -> GPIO4 (optional) -->
+  <polyline points="615,205 730,205" fill="none" stroke="#8a99a1" stroke-width="2" stroke-dasharray="5 4"/>
+  <!-- VCC -> 3V3 -->
+  <polyline points="615,235 730,235" fill="none" stroke="#c98a2a" stroke-width="2"/>
+
+  <!-- Notes -->
+  <text class="note" x="620" y="258">VCC: 3V3 (MAX3485) / 5 V (MAX485)</text>
+  <text class="note" x="618" y="222">DE+RE jen u modulu bez auto-směru</text>
+  <text class="note" x="30" y="398">Svorky 3 a 4 nechat volné —</text>
+  <text class="note" x="30" y="414">to je interní sběrnice k jednotce!</text>
+  <text class="note" x="30" y="446">Externí Modbus RTU: svorky 5 (A) a 6 (B) · 9600 Bd · 8N1 · adresa dle Setting → RS485 → Modbus</text>
+</svg>

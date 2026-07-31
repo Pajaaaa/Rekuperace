@@ -697,9 +697,12 @@ a{color:var(--brand)}
     <tr><td>41–49</td><td>R</td><td>CO₂ externích čidel Onsite0–8</td><td>400–5000 ppm · 0xFFFF = chyba/chybí čidlo</td></tr>
   </table></div>
   <h3>Napojení přes ESP32 (Home Assistant)</h3>
-  <p>Praktická integrace do Home Assistanta: ESP32 s RS485 převodníkem pověšený na svorky 5/6 panelu, firmware ESPHome s <code class="mono">modbus_controller</code>. Kompletní konfigurace, HA balíček a schéma jsou v repozitáři <a href="https://github.com/Pajaaaa/Rekuperace">Pajaaaa/Rekuperace</a>.</p>
+  <p>Praktická integrace do Home Assistanta: ESP32 nebo ESP8266 (D1 mini) s RS485 převodníkem pověšeným na svorky 5/6 panelu, firmware ESPHome s <code class="mono">modbus_controller</code> — na D1 mini běží softwarový UART, který na 9600 Bd bohatě stačí. Kompletní konfigurace obou variant, HA balíček a schémata jsou v repozitáři <a href="https://github.com/Pajaaaa/Rekuperace">Pajaaaa/Rekuperace</a>.</p>
   <div class="warnbox">Svorky <strong>3 a 4</strong> jsou interní sběrnice panel ↔ jednotka — na ty nic nepřipojovat! Externí Modbus patří výhradně na svorky <strong>5 (A)</strong> a <strong>6 (B)</strong>.</div>
-  <figure><img src="zapojeni-esp32-rs485.svg" loading="lazy" alt="Schéma zapojení ESP32 přes RS485 na panel VK8"><figcaption>Schéma zapojení: panel VK8 → RS485 převodník → ESP32, napájení ze svorky 12 V přes step-down</figcaption></figure>
+  <div class="figrow">
+    <figure><img src="zapojeni-esp32-rs485.svg" loading="lazy" alt="Schéma zapojení ESP32 přes RS485 na panel VK8"><figcaption>Varianta ESP32: panel VK8 → RS485 převodník → ESP32, napájení ze svorky 12 V přes step-down</figcaption></figure>
+    <figure><img src="zapojeni-esp8266-rs485.svg" loading="lazy" alt="Schéma zapojení ESP8266 D1 mini přes RS485 na panel VK8"><figcaption>Varianta ESP8266 (D1 mini): stejné zapojení, jen piny D2/D1/D5 a softwarový UART</figcaption></figure>
+  </div>
 </section>
 
 <footer>

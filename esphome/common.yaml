@@ -1,0 +1,344 @@
+esphome:
+  name: ${name}
+  friendly_name: ${friendly_name}
+logger:
+  # UART0 nechává volný pro USB log; Modbus jede na UART1 (piny níže)
+
+api:
+
+ota:
+  - platform: esphome
+
+wifi:
+  ssid: !secret wifi_ssid
+  password: !secret wifi_password
+  ap:
+    ssid: "Rekuperace fallback"
+
+captive_portal:
+
+uart:
+  id: uart_modbus
+  tx_pin: ${tx_pin}
+  rx_pin: ${rx_pin}
+  baud_rate: 9600
+  data_bits: 8
+  stop_bits: 1
+  parity: NONE
+
+modbus:
+  id: modbus_bus
+  # Převodník bez automatického řízení směru (klasický MAX485 s DE+RE):
+  # spoj DE+RE, připoj na volný GPIO a odkomentuj:
+  # flow_control_pin: GPIO4
+
+modbus_controller:
+  - id: vk8
+    address: ${modbus_address}
+    modbus_id: modbus_bus
+    update_interval: 15s
+    command_throttle: 100ms
+
+# ---------------------------------------------------------------------
+# Čtení hodnot
+# ---------------------------------------------------------------------
+sensor:
+  - platform: modbus_controller
+    modbus_controller_id: vk8
+    name: "Teplota odtah (interiér)"
+    address: 15
+    register_type: holding
+    value_type: S_WORD
+    unit_of_measurement: "°C"
+    device_class: temperature
+    state_class: measurement
+    filters:
+      - lambda: "return (x == 32767) ? NAN : x;"
+
+  - platform: modbus_controller
+    modbus_controller_id: vk8
+    name: "Vlhkost odtah (interiér)"
+    address: 16
+    register_type: holding
+    value_type: U_WORD
+    unit_of_measurement: "%"
+    device_class: humidity
+    state_class: measurement
+
+  - platform: modbus_controller
+    modbus_controller_id: vk8
+    name: "PM2.5"
+    address: 17
+    register_type: holding
+    value_type: U_WORD
+    unit_of_measurement: "µg/m³"
+    device_class: pm25
+    state_class: measurement
+
+  - platform: modbus_controller
+    modbus_controller_id: vk8
+    name: "CO2"
+    address: 18
+    register_type: holding
+    value_type: U_WORD
+    unit_of_measurement: "ppm"
+    device_class: carbon_dioxide
+    state_class: measurement
+    filters:
+      - lambda: "return (x == 65535) ? NAN : x;"
+
+  - platform: modbus_controller
+    modbus_controller_id: vk8
+    name: "VOC úroveň"
+    address: 19
+    register_type: holding
+    value_type: U_WORD
+    state_class: measurement
+    icon: mdi:air-filter
+
+  - platform: modbus_controller
+    modbus_controller_id: vk8
+    name: "Teplota výfuk ven"
+    address: 21
+    register_type: holding
+    value_type: S_WORD
+    unit_of_measurement: "°C"
+    device_class: temperature
+    state_class: measurement
+    filters:
+      - lambda: "return (x == 32767) ? NAN : x;"
+
+  - platform: modbus_controller
+    modbus_controller_id: vk8
+    name: "Venkovní teplota"
+    address: 22
+    register_type: holding
+    value_type: S_WORD
+    unit_of_measurement: "°C"
+    device_class: temperature
+    state_class: measurement
+    filters:
+      - lambda: "return (x == 32767) ? NAN : x;"
+
+  # Počítadla filtrů (hodiny provozu; reset tlačítky níže)
+  - platform: modbus_controller
+    modbus_controller_id: vk8
+    name: "G-filtr hodiny"
+    address: 11
+    register_type: holding
+    value_type: U_WORD
+    unit_of_measurement: "h"
+    entity_category: diagnostic
+    icon: mdi:air-filter
+
+  - platform: modbus_controller
+    modbus_controller_id: vk8
+    name: "F-filtr hodiny"
+    address: 10
+    register_type: holding
+    value_type: U_WORD
+    unit_of_measurement: "h"
+    entity_category: diagnostic
+    icon: mdi:air-filter
+
+  - platform: modbus_controller
+    modbus_controller_id: vk8
+    name: "H-filtr hodiny"
+    address: 9
+    register_type: holding
+    value_type: U_WORD
+    unit_of_measurement: "h"
+    entity_category: diagnostic
+    icon: mdi:air-filter
+
+  # --- Externí čidla Onsite0–8 (odkomentuj podle osazení) -----------
+  # Teploty: adresy 23–31 (S_WORD, 0x7FFF = chyba/chybí)
+  # Vlhkosti: adresy 32–40 (U_WORD, 0x00FF = chyba/chybí)
+  # CO2:      adresy 41–49 (U_WORD, 0xFFFF = chyba/chybí)
+  #
+  # - platform: modbus_controller
+  #   modbus_controller_id: vk8
+  #   name: "Onsite0 teplota"
+  #   address: 23
+  #   register_type: holding
+  #   value_type: S_WORD
+  #   unit_of_measurement: "°C"
+  #   device_class: temperature
+  #   filters:
+  #     - lambda: "return (x == 32767) ? NAN : x;"
+  # - platform: modbus_controller
+  #   modbus_controller_id: vk8
+  #   name: "Onsite0 vlhkost"
+  #   address: 32
+  #   register_type: holding
+  #   value_type: U_WORD
+  #   unit_of_measurement: "%"
+  #   device_class: humidity
+  #   filters:
+  #     - lambda: "return (x == 255) ? NAN : x;"
+  # - platform: modbus_controller
+  #   modbus_controller_id: vk8
+  #   name: "Onsite0 CO2"
+  #   address: 41
+  #   register_type: holding
+  #   value_type: U_WORD
+  #   unit_of_measurement: "ppm"
+  #   device_class: carbon_dioxide
+  #   filters:
+  #     - lambda: "return (x == 65535) ? NAN : x;"
+
+binary_sensor:
+  - platform: modbus_controller
+    modbus_controller_id: vk8
+    name: "Odmrazování"
+    address: 20
+    register_type: holding
+    bitmask: 0x1
+    device_class: running
+    icon: mdi:snowflake-melt
+
+# ---------------------------------------------------------------------
+# Ovládání (zápisy fungují jen v ručním režimu!)
+# ---------------------------------------------------------------------
+switch:
+  - platform: modbus_controller
+    modbus_controller_id: vk8
+    name: "Zapnuto"
+    address: 0
+    register_type: holding
+    bitmask: 0x1
+    icon: mdi:power
+
+  - platform: modbus_controller
+    modbus_controller_id: vk8
+    name: "Boost"
+    address: 12
+    register_type: holding
+    bitmask: 0x1
+    icon: mdi:weather-windy
+
+  - platform: modbus_controller
+    modbus_controller_id: vk8
+    name: "Dohřev (Postheat)"
+    address: 7
+    register_type: holding
+    bitmask: 0x1
+    icon: mdi:radiator
+
+  - platform: modbus_controller
+    modbus_controller_id: vk8
+    name: "Předehřev (Preheat)"
+    address: 8
+    register_type: holding
+    bitmask: 0x1
+    icon: mdi:radiator
+
+  - platform: modbus_controller
+    modbus_controller_id: vk8
+    name: "Fan Separation"
+    address: 13
+    register_type: holding
+    bitmask: 0x1
+    entity_category: config
+    icon: mdi:fan-plus
+
+  - platform: modbus_controller
+    modbus_controller_id: vk8
+    name: "Free Cooling"
+    address: 14
+    register_type: holding
+    bitmask: 0x1
+    icon: mdi:snowflake
+
+select:
+  - platform: modbus_controller
+    modbus_controller_id: vk8
+    name: "Režim"
+    address: 1
+    value_type: U_WORD
+    optionsmap:
+      "Auto": 0
+      "Ruční": 1
+      "Spánek": 2
+
+  - platform: modbus_controller
+    modbus_controller_id: vk8
+    name: "Bypass klapka"
+    address: 5
+    value_type: U_WORD
+    optionsmap:
+      "Ručně zavřeno": 0
+      "Ručně otevřeno": 1
+      "Auto": 2
+
+  - platform: modbus_controller
+    modbus_controller_id: vk8
+    name: "Bypass automatika"
+    address: 4
+    value_type: U_WORD
+    entity_category: config
+    optionsmap:
+      "Indoor Auto": 0
+      "Outdoor Auto": 1
+
+  - platform: modbus_controller
+    modbus_controller_id: vk8
+    name: "Externí klapka"
+    address: 6
+    value_type: U_WORD
+    optionsmap:
+      "Zavřena": 0
+      "Otevřena": 1
+      "Auto": 2
+
+number:
+  - platform: modbus_controller
+    modbus_controller_id: vk8
+    name: "Přívod — stupeň"
+    address: 2
+    value_type: U_WORD
+    min_value: 1
+    max_value: 5
+    step: 1
+    mode: slider
+    icon: mdi:fan-chevron-up
+
+  - platform: modbus_controller
+    modbus_controller_id: vk8
+    name: "Odtah — stupeň"
+    address: 3
+    value_type: U_WORD
+    min_value: 1
+    max_value: 5
+    step: 1
+    mode: slider
+    icon: mdi:fan-chevron-down
+
+# Reset počítadel filtrů = zápis 0xAA do příslušného registru
+button:
+  - platform: template
+    name: "Reset G-filtru"
+    entity_category: config
+    icon: mdi:restart
+    on_press:
+      - lambda: |-
+          auto cmd = esphome::modbus_controller::ModbusCommandItem::create_write_single_command(id(vk8), 11, 0xAA);
+          id(vk8)->queue_command(cmd);
+
+  - platform: template
+    name: "Reset F-filtru"
+    entity_category: config
+    icon: mdi:restart
+    on_press:
+      - lambda: |-
+          auto cmd = esphome::modbus_controller::ModbusCommandItem::create_write_single_command(id(vk8), 10, 0xAA);
+          id(vk8)->queue_command(cmd);
+
+  - platform: template
+    name: "Reset H-filtru"
+    entity_category: config
+    icon: mdi:restart
+    on_press:
+      - lambda: |-
+          auto cmd = esphome::modbus_controller::ModbusCommandItem::create_write_single_command(id(vk8), 9, 0xAA);
+          id(vk8)->queue_command(cmd);

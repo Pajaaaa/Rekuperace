@@ -17,12 +17,17 @@ povely; do Home Assistanta jde vše nativně přes ESPHome API (WiFi).
 
 ![Schéma zapojení ESP32 přes RS485 na panel VK8](docs/zapojeni-esp32-rs485.svg)
 
+![Schéma zapojení ESP8266 přes RS485 na panel VK8](docs/zapojeni-esp8266-rs485.svg)
+
 > **Pozor:** svorky **3 a 4** panelu jsou interní sběrnice k jednotce — na ty
 > nic nepřipojovat. Externí Modbus patří výhradně na svorky **5 (A)** a **6 (B)**.
 
 ## Hardware
 
-- **ESP32 DevKit** (esp32dev; funguje cokoli s volným UARTem)
+- **ESP32 DevKit** (`esphome/rekuperace.yaml`) — hardwarový UART, doporučená volba
+- **ESP8266 / Wemos D1 mini** (`esphome/rekuperace-8266.yaml`) — funguje stejně
+  dobře; ESPHome na pinech D1/D2 použije softwarový UART, který na 9600 Bd
+  běží spolehlivě. Vyhni se boot pinům D3 (GPIO0), D4 (GPIO2), D8 (GPIO15)
 - **RS485 převodník — doporučené varianty:**
   - **Modul s automatickým řízením směru** (čip **MAX13487E** nebo deska
     „XY-017 / HW-0519 auto flow control") — *nejjednodušší volba*, nepotřebuje
@@ -42,9 +47,9 @@ povely; do Home Assistanta jde vše nativně přes ESPHome API (WiFi).
 | 6 · **B** | **B** (D−) | — |
 | 2 · GND (nebo GND na T3-D1) | GND | GND |
 | 1 · 12 V | — | přes step-down na 5V/VIN |
-| — | DI | GPIO17 (TX) |
-| — | RO | GPIO16 (RX) |
-| — | DE+RE (jen bez automatiky) | GPIO4 |
+| — | DI | GPIO17 (TX) · na D1 mini D2/GPIO4 |
+| — | RO | GPIO16 (RX) · na D1 mini D1/GPIO5 |
+| — | DE+RE (jen bez automatiky) | GPIO4 · na D1 mini D5/GPIO14 |
 | — | VCC | 3V3 (MAX3485) / 5V (MAX485) |
 
 Poznámky:
