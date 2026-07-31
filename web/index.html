@@ -611,7 +611,12 @@ a{color:var(--brand)}
     <li><strong>Defrost T</strong> (např. −2 °C, rozsah −5 až +3 °C) — spouštěcí teplota odmrazování. Odmrazování začne, když teplota výfuku ven klesne pod nastavenou mez, a skončí, když stoupne nad teplotu odtahu z interiéru minus 3 °C (nejpozději po 15 minutách). Interval mezi cykly je 45 minut. Při odmrazování běží odtahový ventilátor na stupeň 4 (volitelně <em>Defrost Fan Speed 5</em>) a přívodní stojí; po dokončení se systém vrátí do normálního chodu</li>
     <li><strong>Boost Time</strong> (např. 15 min) — délka intenzivního větrání po stisku <kbd>Boost</kbd> na panelu nebo externího tlačítka; po uplynutí se systém vrátí do normálního chodu</li>
     <li><strong>Outdoor Auto Range</strong> T1/T2 (např. 13 °C / 26 °C; T1: +10…+20 °C, T2: +20…+40 °C) — venkovní komfortní rozsah pro automatiku bypassu. Klapka se otevře, když je odtah z interiéru alespoň o 3 °C teplejší než venkovní vzduch a venkovní teplota je mezi T1 a T2; zavře se, když rozdíl klesne pod 3 °C nebo venkovní teplota rozsah opustí</li>
-    <li><strong>Indoor Auto Set</strong> T3 (např. 23 °C; rozsah +15…+40 °C) — vnitřní komfortní bod. Klapka se otevírá/zavírá podle vztahu teploty odtahu, venkovní teploty a T3 ± 3 °C tak, aby se interiér držel u nastaveného bodu</li>
+    <li><strong>Indoor Auto Set</strong> T3 (např. 23 °C; rozsah +15…+40 °C) — vnitřní komfortní bod. Rozhoduje se podle teploty odtahu (interiér), venkovního vzduchu a pásma T3 ± 3 °C:
+      <ul>
+        <li>interiér <em>teplejší</em> než venek: klapka se otevře, když je interiér nad T3 + 3 °C (přetopeno → chladit venkovním vzduchem), a zavře, když klesne pod T3 − 3 °C</li>
+        <li>interiér <em>chladnější</em> než venek: klapka se otevře, když je interiér pod T3 − 3 °C (vytápět venkovním vzduchem), a zavře, když stoupne nad T3 + 3 °C</li>
+      </ul>
+    </li>
     <li>Uložení tlačítkem <kbd>Save</kbd>; <kbd>Default</kbd> vrátí tovární hodnotu vybrané položky</li>
   </ul>
   <h3>Správa filtrů (Filter Management)</h3>
@@ -691,6 +696,10 @@ a{color:var(--brand)}
     <tr><td>32–40</td><td>R</td><td>Vlhkost externích čidel Onsite0–8</td><td>0–100 % · 0x00FF = chyba/chybí čidlo</td></tr>
     <tr><td>41–49</td><td>R</td><td>CO₂ externích čidel Onsite0–8</td><td>400–5000 ppm · 0xFFFF = chyba/chybí čidlo</td></tr>
   </table></div>
+  <h3>Napojení přes ESP32 (Home Assistant)</h3>
+  <p>Praktická integrace do Home Assistanta: ESP32 s RS485 převodníkem pověšený na svorky 5/6 panelu, firmware ESPHome s <code class="mono">modbus_controller</code>. Kompletní konfigurace, HA balíček a schéma jsou v repozitáři <a href="https://github.com/Pajaaaa/Rekuperace">Pajaaaa/Rekuperace</a>.</p>
+  <div class="warnbox">Svorky <strong>3 a 4</strong> jsou interní sběrnice panel ↔ jednotka — na ty nic nepřipojovat! Externí Modbus patří výhradně na svorky <strong>5 (A)</strong> a <strong>6 (B)</strong>.</div>
+  <figure><img src="zapojeni-esp32-rs485.svg" loading="lazy" alt="Schéma zapojení ESP32 přes RS485 na panel VK8"><figcaption>Schéma zapojení: panel VK8 → RS485 převodník → ESP32, napájení ze svorky 12 V přes step-down</figcaption></figure>
 </section>
 
 <footer>

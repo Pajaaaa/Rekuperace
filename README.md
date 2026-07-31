@@ -15,18 +15,10 @@ Panel VK8 má na zadní svorkovnici vyvedený **externí RS485 (Modbus RTU slave
 ESP32 s RS485 převodníkem se na něj pověsí jako master, čte čidla a posílá
 povely; do Home Assistanta jde vše nativně přes ESPHome API (WiFi).
 
-```
-  jednotka MVHR                panel VK8                 ESP32 můstek
- ┌──────────────┐   4 vodiče  ┌─────────────┐          ┌─────────────────┐
- │ deska VL62   │────────────▶│ 1  12V      │          │                 │
- │ svorky T3-D1 │  12V/G/B/A  │ 2  GND ─────┼──────────┼─ GND (společná) │
- └──────────────┘             │ 3  B        │          │                 │
-                              │ 4  A        │  RS485   │  RS485 modul    │
-                              │ 5  A  ──────┼──────────┼─ A   ┌────────┐ │
-                              │ 6  B  ──────┼──────────┼─ B   │MAX3485 │ │
-                              └─────────────┘          │      └────────┘ │
-                                                       └─────────────────┘
-```
+![Schéma zapojení ESP32 přes RS485 na panel VK8](docs/zapojeni-esp32-rs485.svg)
+
+> **Pozor:** svorky **3 a 4** panelu jsou interní sběrnice k jednotce — na ty
+> nic nepřipojovat. Externí Modbus patří výhradně na svorky **5 (A)** a **6 (B)**.
 
 ## Hardware
 
