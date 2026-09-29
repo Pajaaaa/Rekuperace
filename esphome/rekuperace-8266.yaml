@@ -15,8 +15,8 @@
 substitutions:
   name: rekuperace
   friendly_name: Rekuperace
-  tx_pin: GPIO4     # D2 na D1 mini → DI převodníku
-  rx_pin: GPIO5     # D1 na D1 mini ← RO převodníku
+  tx_pin: GPIO4     # D2 na D1 mini: vysílání
+  rx_pin: GPIO14    # D5 na D1 mini: příjem
   modbus_address: "1"
 
 esp8266:
@@ -26,6 +26,6 @@ packages:
   common: !include common.yaml
 
 # Převodník bez automatického řízení směru (MAX485: spojené DE+RE):
-# odkomentuj a přiveď DE+RE na D5 (GPIO14)
+# odkomentuj a přiveď DE+RE na jiný volný GPIO
 # modbus:
 #   flow_control_pin: GPIO14

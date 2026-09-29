@@ -5,6 +5,7 @@ logger:
   # UART0 nechává volný pro USB log; Modbus jede na UART1 (piny níže)
 
 api:
+  max_connections: 8
 
 ota:
   - platform: esphome
@@ -17,6 +18,11 @@ wifi:
 
 captive_portal:
 
+web_server:
+  port: 80
+  version: 3
+  local: true
+
 uart:
   id: uart_modbus
   tx_pin: ${tx_pin}
@@ -25,6 +31,13 @@ uart:
   data_bits: 8
   stop_bits: 1
   parity: NONE
+  debug:
+    direction: BOTH
+    dummy_receiver: false
+    after:
+      timeout: 100ms
+    sequence:
+      - lambda: UARTDebug::log_hex(direction, bytes, ' ');
 
 modbus:
   id: modbus_bus
@@ -38,11 +51,23 @@ modbus_controller:
     modbus_id: modbus_bus
     update_interval: 15s
     command_throttle: 100ms
+  - id: vk8_keepalive
+    address: ${modbus_address}
+    modbus_id: modbus_bus
+    update_interval: 5s
+    command_throttle: 100ms
 
 # ---------------------------------------------------------------------
 # Čtení hodnot
 # ---------------------------------------------------------------------
 sensor:
+  - platform: modbus_controller
+    modbus_controller_id: vk8_keepalive
+    name: "Modbus keepalive"
+    internal: true
+    address: 15
+    register_type: holding
+    value_type: S_WORD
   - platform: modbus_controller
     modbus_controller_id: vk8
     name: "Teplota odtah (interiér)"
@@ -297,7 +322,7 @@ number:
     name: "Přívod — stupeň"
     address: 2
     value_type: U_WORD
-    min_value: 1
+    min_value: 0
     max_value: 5
     step: 1
     mode: slider
@@ -308,7 +333,7 @@ number:
     name: "Odtah — stupeň"
     address: 3
     value_type: U_WORD
-    min_value: 1
+    min_value: 0
     max_value: 5
     step: 1
     mode: slider

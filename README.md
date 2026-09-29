@@ -86,6 +86,19 @@ Konfigurace vystavuje:
 
 ## Home Assistant
 
+Aktuálně nasazená karta je v `homeassistant/rekuperace-live-card.yaml`.
+Vlož ji jako ruční kartu do samostatného pohledu **Rekuperace** s rozložením
+**Panel (samostatná karta)**. Obsahuje živé hodnoty, ovládání, grafy a vložené
+SVG schéma; zdroj obrázku je také v `docs/rekuperace-live.svg`.
+Animace jsou ilustrativní a nejsou vázané na skutečný běh ventilátorů.
+
+Nasazené zapojení D1 mini s XY-017 používá **TX D2 / GPIO4** a
+**RX D5 / GPIO14**, společnou zem a Modbus 9600 8N1, adresu 1.
+Oba ventilátory mají rozsah **0–5**; pro samostatné řízení použij ruční
+režim a Fan Separation. OTA zůstává povolené. Aktuální konfigurace
+obsahuje diagnostické UART logování, keepalive a místní web na portu 80;
+ESPHome API nemá nastavené šifrování.
+
 1. `homeassistant/rekuperace_package.yaml` → `config/packages/`
    (skripty boost/stupeň/zpět-do-auto, automatizace sprcha → boost,
    hlídání limitu filtrů)

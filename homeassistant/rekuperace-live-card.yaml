@@ -1,0 +1,296 @@
+type: vertical-stack
+cards:
+  - type: markdown
+    content: |-
+      ## 🌬️ Živé schéma rekuperace
+      Modrá větev přivádí čerstvý vzduch do domu, oranžová odvádí použitý vzduch ven. Hodnoty a ikony v obrázku jsou živé a klikatelné.
+  - type: picture-elements
+    image: data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxNzUwIDc2MCI+CjxyZWN0IHdpZHRoPSIxNzUwIiBoZWlnaHQ9Ijc2MCIgcng9IjM0IiBmaWxsPSIjMDkxZDJhIi8+PGcgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMTc1IDApIj48ZGVmcz4KICA8bGluZWFyR3JhZGllbnQgaWQ9ImJnIiB4MT0iMCIgeTE9IjAiIHgyPSIxIiB5Mj0iMSI+PHN0b3Agc3RvcC1jb2xvcj0iIzA3MTYyNCIvPjxzdG9wIG9mZnNldD0iLjU1IiBzdG9wLWNvbG9yPSIjMGIyNDMzIi8+PHN0b3Agb2Zmc2V0PSIxIiBzdG9wLWNvbG9yPSIjMTAyMTJjIi8+PC9saW5lYXJHcmFkaWVudD4KICA8bGluZWFyR3JhZGllbnQgaWQ9InVuaXQiIHgxPSIwIiB5MT0iMCIgeDI9IjEiIHkyPSIxIj48c3RvcCBzdG9wLWNvbG9yPSIjMTczOTRhIi8+PHN0b3Agb2Zmc2V0PSIxIiBzdG9wLWNvbG9yPSIjMGMyMjMwIi8+PC9saW5lYXJHcmFkaWVudD4KICA8bGluZWFyR3JhZGllbnQgaWQ9Imh4IiB4MT0iMCIgeTE9IjAiIHgyPSIxIiB5Mj0iMSI+PHN0b3Agc3RvcC1jb2xvcj0iIzM4YmRmOCIvPjxzdG9wIG9mZnNldD0iLjUiIHN0b3AtY29sb3I9IiNjYmQ1ZTEiLz48c3RvcCBvZmZzZXQ9IjEiIHN0b3AtY29sb3I9IiNmYjkyM2MiLz48L2xpbmVhckdyYWRpZW50PgogIDxmaWx0ZXIgaWQ9Imdsb3ciPjxmZUdhdXNzaWFuQmx1ciBzdGREZXZpYXRpb249IjciIHJlc3VsdD0iYiIvPjxmZU1lcmdlPjxmZU1lcmdlTm9kZSBpbj0iYiIvPjxmZU1lcmdlTm9kZSBpbj0iU291cmNlR3JhcGhpYyIvPjwvZmVNZXJnZT48L2ZpbHRlcj4KICA8bWFya2VyIGlkPSJibHVlQXJyb3ciIHZpZXdCb3g9IjAgMCAxMCAxMCIgcmVmWD0iOCIgcmVmWT0iNSIgbWFya2VyV2lkdGg9IjciIG1hcmtlckhlaWdodD0iNyIgb3JpZW50PSJhdXRvIj48cGF0aCBkPSJNMCAwTDEwIDVMMCAxMHoiIGZpbGw9IiMzOGJkZjgiLz48L21hcmtlcj4KICA8bWFya2VyIGlkPSJvcmFuZ2VBcnJvdyIgdmlld0JveD0iMCAwIDEwIDEwIiByZWZYPSI4IiByZWZZPSI1IiBtYXJrZXJXaWR0aD0iNyIgbWFya2VySGVpZ2h0PSI3IiBvcmllbnQ9ImF1dG8iPjxwYXRoIGQ9Ik0wIDBMMTAgNUwwIDEweiIgZmlsbD0iI2ZiOTIzYyIvPjwvbWFya2VyPgo8L2RlZnM+CjxzdHlsZT4KICAuZmxvdy1ibHVle3N0cm9rZS1kYXNoYXJyYXk6MjAgMTg7YW5pbWF0aW9uOmJsdWVGbG93IDEuMXMgbGluZWFyIGluZmluaXRlfQogIC5mbG93LW9yYW5nZXtzdHJva2UtZGFzaGFycmF5OjIwIDE4O2FuaW1hdGlvbjpibHVlRmxvdyAxLjFzIGxpbmVhciBpbmZpbml0ZX0KICAuc3Bpbnt0cmFuc2Zvcm0tYm94OmZpbGwtYm94O3RyYW5zZm9ybS1vcmlnaW46Y2VudGVyO2FuaW1hdGlvbjpzcGluIDIuMnMgbGluZWFyIGluZmluaXRlfQogIC5wdWxzZXthbmltYXRpb246cHVsc2UgMnMgZWFzZS1pbi1vdXQgaW5maW5pdGV9CiAgQGtleWZyYW1lcyBibHVlRmxvd3t0b3tzdHJva2UtZGFzaG9mZnNldDotNzZ9fQogIEBrZXlmcmFtZXMgb3JhbmdlRmxvd3t0b3tzdHJva2UtZGFzaG9mZnNldDo3Nn19CiAgQGtleWZyYW1lcyBzcGlue3Rve3RyYW5zZm9ybTpyb3RhdGUoMzYwZGVnKX19CiAgQGtleWZyYW1lcyBwdWxzZXs1MCV7b3BhY2l0eTouNDV9fQogIHRleHR7Zm9udC1mYW1pbHk6QXJpYWwsc2Fucy1zZXJpZn0KPC9zdHlsZT4KPHJlY3Qgd2lkdGg9IjE0MDAiIGhlaWdodD0iNzYwIiByeD0iMzQiIGZpbGw9InVybCgjYmcpIi8+CjxjaXJjbGUgY3g9Ijg1IiBjeT0iOTUiIHI9IjM4IiBmaWxsPSIjZmJiZjI0IiBvcGFjaXR5PSIuMTgiLz48Y2lyY2xlIGN4PSI4NSIgY3k9Ijk1IiByPSIyMiIgZmlsbD0iI2ZiYmYyNCIgY2xhc3M9InB1bHNlIi8+CjxwYXRoIGQ9Ik0zMCAxODBMMTIwIDExMGw5MCA3MCA3MC00NSA4NSA3MCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjMzc1NDZhIiBzdHJva2Utd2lkdGg9IjEyIiBzdHJva2UtbGluZWpvaW49InJvdW5kIi8+CjxwYXRoIGQ9Ik0xMTIwIDIzMHYtNzhsMTA1LTc1IDEwNSA3NXYxNDBoLTIxMHoiIGZpbGw9IiMxMzJmM2UiIHN0cm9rZT0iIzY0N2I4YiIgc3Ryb2tlLXdpZHRoPSI4Ii8+PHBhdGggZD0iTTExNzAgMjkydi04M2g1NXY4M200MC03NWg0MnY0MmgtNDJ6IiBmaWxsPSIjMGIxYzI2IiBzdHJva2U9IiM2NDdiOGIiIHN0cm9rZS13aWR0aD0iNiIvPgo8dGV4dCB4PSI1NSIgeT0iNDUiIGZpbGw9IiM5M2M1ZmQiIGZvbnQtc2l6ZT0iMjMiIGZvbnQtd2VpZ2h0PSI3MDAiIGxldHRlci1zcGFjaW5nPSIzIj5WRU5LT1ZOw40gUFJPU1TFmEVEw408L3RleHQ+Cjx0ZXh0IHg9IjEwOTUiIHk9IjQ1IiBmaWxsPSIjZmRiYTc0IiBmb250LXNpemU9IjIzIiBmb250LXdlaWdodD0iNzAwIiBsZXR0ZXItc3BhY2luZz0iMyI+RMWuTTwvdGV4dD4KPHJlY3QgeD0iMzcwIiB5PSIxMDUiIHdpZHRoPSI2NjAiIGhlaWdodD0iNTUwIiByeD0iNDUiIGZpbGw9InVybCgjdW5pdCkiIHN0cm9rZT0iIzMxNTY2YSIgc3Ryb2tlLXdpZHRoPSI1Ii8+Cgo8cGF0aCBkPSJNNTUgMjYwSDEzNDAiIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzBjNDE1ZSIgc3Ryb2tlLXdpZHRoPSI1NCIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIi8+CjxwYXRoIGQ9Ik01NSAyNjBIMTM0MCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjMzhiZGY4IiBzdHJva2Utd2lkdGg9IjEyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIGNsYXNzPSJmbG93LWJsdWUiIG1hcmtlci1lbmQ9InVybCgjYmx1ZUFycm93KSIvPgo8cGF0aCBkPSJNMTM0MCA1MDVINTUiIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzViMzQyNSIgc3Ryb2tlLXdpZHRoPSI1NCIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIi8+CjxwYXRoIGQ9Ik0xMzQwIDUwNUg1NSIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjZmI5MjNjIiBzdHJva2Utd2lkdGg9IjEyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIGNsYXNzPSJmbG93LW9yYW5nZSIgbWFya2VyLWVuZD0idXJsKCNvcmFuZ2VBcnJvdykiLz4KCgo8ZyB0cmFuc2Zvcm09InRyYW5zbGF0ZSg0NTUgMjYwKSI+PHJlY3QgeD0iLTQwIiB5PSItNjEiIHdpZHRoPSI4MCIgaGVpZ2h0PSIxMjIiIHJ4PSIxMiIgZmlsbD0iIzEzMmIzOCIgc3Ryb2tlPSIjOTRhM2I4IiBzdHJva2Utd2lkdGg9IjUiLz48cGF0aCBkPSJNLTI0LTQ1aDQ4TS0yNC0yMmg0OE0tMjQgMWg0OE0tMjQgMjRoNDhNLTI0IDQ3aDQ4IiBzdHJva2U9IiNjYmQ1ZTEiIHN0cm9rZS13aWR0aD0iNSIvPjx0ZXh0IHg9IjAiIHk9Ii03OSIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZmlsbD0iI2NiZDVlMSIgZm9udC1zaXplPSIxOSI+RklMVFI8L3RleHQ+PC9nPgo8ZyB0cmFuc2Zvcm09InRyYW5zbGF0ZSg5NDUgNTA1KSI+PHJlY3QgeD0iLTQwIiB5PSItNjEiIHdpZHRoPSI4MCIgaGVpZ2h0PSIxMjIiIHJ4PSIxMiIgZmlsbD0iIzEzMmIzOCIgc3Ryb2tlPSIjOTRhM2I4IiBzdHJva2Utd2lkdGg9IjUiLz48cGF0aCBkPSJNLTI0LTQ1aDQ4TS0yNC0yMmg0OE0tMjQgMWg0OE0tMjQgMjRoNDhNLTI0IDQ3aDQ4IiBzdHJva2U9IiNjYmQ1ZTEiIHN0cm9rZS13aWR0aD0iNSIvPjx0ZXh0IHg9IjAiIHk9IjkxIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmaWxsPSIjY2JkNWUxIiBmb250LXNpemU9IjE5Ij5GSUxUUjwvdGV4dD48L2c+CjxnIHRyYW5zZm9ybT0idHJhbnNsYXRlKDU2MCAyNjApIj48ZyBjbGFzcz0ic3BpbiI+PGNpcmNsZSByPSI1MyIgZmlsbD0iIzEwMmIzYiIgc3Ryb2tlPSIjNjdlOGY5IiBzdHJva2Utd2lkdGg9IjYiLz48cGF0aCBkPSJNMC00MUMzMS00MSAzNC0xMCA4IDBDNDIgOSAzMCAzOSAxIDIzQy04IDU1LTQwIDQwLTI1IDEwQy01NiAxLTQzLTMyLTEwLTIyQy0zLTM2LTEtNDAgMC00MXoiIGZpbGw9IiMzOGJkZjgiLz48L2c+PC9nPgo8ZyB0cmFuc2Zvcm09InRyYW5zbGF0ZSg4NDAgNTA1KSI+PGcgY2xhc3M9InNwaW4iPjxjaXJjbGUgcj0iNTMiIGZpbGw9IiMzMDI2MWYiIHN0cm9rZT0iI2ZkYmE3NCIgc3Ryb2tlLXdpZHRoPSI2Ii8+PHBhdGggZD0iTTAtNDFDMzEtNDEgMzQtMTAgOCAwQzQyIDkgMzAgMzkgMSAyM0MtOCA1NS00MCA0MC0yNSAxMEMtNTYgMS00My0zMi0xMC0yMkMtMy0zNi0xLTQwIDAtNDF6IiBmaWxsPSIjZmI5MjNjIi8+PC9nPjwvZz4KPGc+PHJlY3QgeD0iNjE4IiB5PSIzMDAiIHdpZHRoPSIxNjQiIGhlaWdodD0iMTY1IiByeD0iMjIiIGZpbGw9IiMwZDI0MzEiIHN0cm9rZT0idXJsKCNoeCkiIHN0cm9rZS13aWR0aD0iOCIvPjxwYXRoIGQ9Ik02NDIgMzI1bDExNiAxMTZNNjQyIDM2NWw3NiA3Nk02ODIgMzI1bDc2IDc2TTc1OCAzMjVMNjQyIDQ0MU03MTggMzI1bC03NiA3NiIgc3Ryb2tlPSIjZDllZGY0IiBzdHJva2Utd2lkdGg9IjkiIG9wYWNpdHk9Ii44Ii8+PHRleHQgeD0iNzAwIiB5PSI0OTMiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZpbGw9IiNlMmU4ZjAiIGZvbnQtc2l6ZT0iMjAiIGZvbnQtd2VpZ2h0PSI3MDAiPlbDnU3Emk7DjUsgVEVQTEE8L3RleHQ+PC9nPgo8cGF0aCBkPSJNNTg1IDI2MEM1ODUgMTgzIDgxNSAxODMgODE1IDI2MCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjYTc4YmZhIiBzdHJva2Utd2lkdGg9IjEwIiBzdHJva2UtZGFzaGFycmF5PSIxOCAxNSIgY2xhc3M9ImZsb3ctYmx1ZSIvPgo8cmVjdCB4PSI2NzUiIHk9IjE3NyIgd2lkdGg9IjUwIiBoZWlnaHQ9IjMzIiByeD0iOCIgZmlsbD0iIzZkNWE5ZSIgc3Ryb2tlPSIjYzRiNWZkIiBzdHJva2Utd2lkdGg9IjQiLz48dGV4dCB4PSI3MDAiIHk9IjE5OSIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZmlsbD0id2hpdGUiIGZvbnQtc2l6ZT0iMTUiIGZvbnQtd2VpZ2h0PSI3MDAiPkJZUEFTUzwvdGV4dD4KPHBhdGggZD0iTTcwMCA1MjN2NzUiIHN0cm9rZT0iI2ZiYmYyNCIgc3Ryb2tlLXdpZHRoPSI4IiBzdHJva2UtZGFzaGFycmF5PSIxMCA5Ii8+PHBhdGggZD0iTTY3NyA1OTloNDZsLTIzIDM1eiIgZmlsbD0iI2ZiYmYyNCIgY2xhc3M9InB1bHNlIi8+PHRleHQgeD0iNzAwIiB5PSI2ODQiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZpbGw9IiNmZGU2OGEiIGZvbnQtc2l6ZT0iMTkiIGZvbnQtd2VpZ2h0PSI3MDAiPk9EVk9EIEtPTkRFTlrDgVRVPC90ZXh0PgoKPC9nPjwvc3ZnPg==
+    dark_mode_image: data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxNzUwIDc2MCI+CjxyZWN0IHdpZHRoPSIxNzUwIiBoZWlnaHQ9Ijc2MCIgcng9IjM0IiBmaWxsPSIjMDkxZDJhIi8+PGcgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMTc1IDApIj48ZGVmcz4KICA8bGluZWFyR3JhZGllbnQgaWQ9ImJnIiB4MT0iMCIgeTE9IjAiIHgyPSIxIiB5Mj0iMSI+PHN0b3Agc3RvcC1jb2xvcj0iIzA3MTYyNCIvPjxzdG9wIG9mZnNldD0iLjU1IiBzdG9wLWNvbG9yPSIjMGIyNDMzIi8+PHN0b3Agb2Zmc2V0PSIxIiBzdG9wLWNvbG9yPSIjMTAyMTJjIi8+PC9saW5lYXJHcmFkaWVudD4KICA8bGluZWFyR3JhZGllbnQgaWQ9InVuaXQiIHgxPSIwIiB5MT0iMCIgeDI9IjEiIHkyPSIxIj48c3RvcCBzdG9wLWNvbG9yPSIjMTczOTRhIi8+PHN0b3Agb2Zmc2V0PSIxIiBzdG9wLWNvbG9yPSIjMGMyMjMwIi8+PC9saW5lYXJHcmFkaWVudD4KICA8bGluZWFyR3JhZGllbnQgaWQ9Imh4IiB4MT0iMCIgeTE9IjAiIHgyPSIxIiB5Mj0iMSI+PHN0b3Agc3RvcC1jb2xvcj0iIzM4YmRmOCIvPjxzdG9wIG9mZnNldD0iLjUiIHN0b3AtY29sb3I9IiNjYmQ1ZTEiLz48c3RvcCBvZmZzZXQ9IjEiIHN0b3AtY29sb3I9IiNmYjkyM2MiLz48L2xpbmVhckdyYWRpZW50PgogIDxmaWx0ZXIgaWQ9Imdsb3ciPjxmZUdhdXNzaWFuQmx1ciBzdGREZXZpYXRpb249IjciIHJlc3VsdD0iYiIvPjxmZU1lcmdlPjxmZU1lcmdlTm9kZSBpbj0iYiIvPjxmZU1lcmdlTm9kZSBpbj0iU291cmNlR3JhcGhpYyIvPjwvZmVNZXJnZT48L2ZpbHRlcj4KICA8bWFya2VyIGlkPSJibHVlQXJyb3ciIHZpZXdCb3g9IjAgMCAxMCAxMCIgcmVmWD0iOCIgcmVmWT0iNSIgbWFya2VyV2lkdGg9IjciIG1hcmtlckhlaWdodD0iNyIgb3JpZW50PSJhdXRvIj48cGF0aCBkPSJNMCAwTDEwIDVMMCAxMHoiIGZpbGw9IiMzOGJkZjgiLz48L21hcmtlcj4KICA8bWFya2VyIGlkPSJvcmFuZ2VBcnJvdyIgdmlld0JveD0iMCAwIDEwIDEwIiByZWZYPSI4IiByZWZZPSI1IiBtYXJrZXJXaWR0aD0iNyIgbWFya2VySGVpZ2h0PSI3IiBvcmllbnQ9ImF1dG8iPjxwYXRoIGQ9Ik0wIDBMMTAgNUwwIDEweiIgZmlsbD0iI2ZiOTIzYyIvPjwvbWFya2VyPgo8L2RlZnM+CjxzdHlsZT4KICAuZmxvdy1ibHVle3N0cm9rZS1kYXNoYXJyYXk6MjAgMTg7YW5pbWF0aW9uOmJsdWVGbG93IDEuMXMgbGluZWFyIGluZmluaXRlfQogIC5mbG93LW9yYW5nZXtzdHJva2UtZGFzaGFycmF5OjIwIDE4O2FuaW1hdGlvbjpibHVlRmxvdyAxLjFzIGxpbmVhciBpbmZpbml0ZX0KICAuc3Bpbnt0cmFuc2Zvcm0tYm94OmZpbGwtYm94O3RyYW5zZm9ybS1vcmlnaW46Y2VudGVyO2FuaW1hdGlvbjpzcGluIDIuMnMgbGluZWFyIGluZmluaXRlfQogIC5wdWxzZXthbmltYXRpb246cHVsc2UgMnMgZWFzZS1pbi1vdXQgaW5maW5pdGV9CiAgQGtleWZyYW1lcyBibHVlRmxvd3t0b3tzdHJva2UtZGFzaG9mZnNldDotNzZ9fQogIEBrZXlmcmFtZXMgb3JhbmdlRmxvd3t0b3tzdHJva2UtZGFzaG9mZnNldDo3Nn19CiAgQGtleWZyYW1lcyBzcGlue3Rve3RyYW5zZm9ybTpyb3RhdGUoMzYwZGVnKX19CiAgQGtleWZyYW1lcyBwdWxzZXs1MCV7b3BhY2l0eTouNDV9fQogIHRleHR7Zm9udC1mYW1pbHk6QXJpYWwsc2Fucy1zZXJpZn0KPC9zdHlsZT4KPHJlY3Qgd2lkdGg9IjE0MDAiIGhlaWdodD0iNzYwIiByeD0iMzQiIGZpbGw9InVybCgjYmcpIi8+CjxjaXJjbGUgY3g9Ijg1IiBjeT0iOTUiIHI9IjM4IiBmaWxsPSIjZmJiZjI0IiBvcGFjaXR5PSIuMTgiLz48Y2lyY2xlIGN4PSI4NSIgY3k9Ijk1IiByPSIyMiIgZmlsbD0iI2ZiYmYyNCIgY2xhc3M9InB1bHNlIi8+CjxwYXRoIGQ9Ik0zMCAxODBMMTIwIDExMGw5MCA3MCA3MC00NSA4NSA3MCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjMzc1NDZhIiBzdHJva2Utd2lkdGg9IjEyIiBzdHJva2UtbGluZWpvaW49InJvdW5kIi8+CjxwYXRoIGQ9Ik0xMTIwIDIzMHYtNzhsMTA1LTc1IDEwNSA3NXYxNDBoLTIxMHoiIGZpbGw9IiMxMzJmM2UiIHN0cm9rZT0iIzY0N2I4YiIgc3Ryb2tlLXdpZHRoPSI4Ii8+PHBhdGggZD0iTTExNzAgMjkydi04M2g1NXY4M200MC03NWg0MnY0MmgtNDJ6IiBmaWxsPSIjMGIxYzI2IiBzdHJva2U9IiM2NDdiOGIiIHN0cm9rZS13aWR0aD0iNiIvPgo8dGV4dCB4PSI1NSIgeT0iNDUiIGZpbGw9IiM5M2M1ZmQiIGZvbnQtc2l6ZT0iMjMiIGZvbnQtd2VpZ2h0PSI3MDAiIGxldHRlci1zcGFjaW5nPSIzIj5WRU5LT1ZOw40gUFJPU1TFmEVEw408L3RleHQ+Cjx0ZXh0IHg9IjEwOTUiIHk9IjQ1IiBmaWxsPSIjZmRiYTc0IiBmb250LXNpemU9IjIzIiBmb250LXdlaWdodD0iNzAwIiBsZXR0ZXItc3BhY2luZz0iMyI+RMWuTTwvdGV4dD4KPHJlY3QgeD0iMzcwIiB5PSIxMDUiIHdpZHRoPSI2NjAiIGhlaWdodD0iNTUwIiByeD0iNDUiIGZpbGw9InVybCgjdW5pdCkiIHN0cm9rZT0iIzMxNTY2YSIgc3Ryb2tlLXdpZHRoPSI1Ii8+Cgo8cGF0aCBkPSJNNTUgMjYwSDEzNDAiIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzBjNDE1ZSIgc3Ryb2tlLXdpZHRoPSI1NCIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIi8+CjxwYXRoIGQ9Ik01NSAyNjBIMTM0MCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjMzhiZGY4IiBzdHJva2Utd2lkdGg9IjEyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIGNsYXNzPSJmbG93LWJsdWUiIG1hcmtlci1lbmQ9InVybCgjYmx1ZUFycm93KSIvPgo8cGF0aCBkPSJNMTM0MCA1MDVINTUiIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzViMzQyNSIgc3Ryb2tlLXdpZHRoPSI1NCIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIi8+CjxwYXRoIGQ9Ik0xMzQwIDUwNUg1NSIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjZmI5MjNjIiBzdHJva2Utd2lkdGg9IjEyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIGNsYXNzPSJmbG93LW9yYW5nZSIgbWFya2VyLWVuZD0idXJsKCNvcmFuZ2VBcnJvdykiLz4KCgo8ZyB0cmFuc2Zvcm09InRyYW5zbGF0ZSg0NTUgMjYwKSI+PHJlY3QgeD0iLTQwIiB5PSItNjEiIHdpZHRoPSI4MCIgaGVpZ2h0PSIxMjIiIHJ4PSIxMiIgZmlsbD0iIzEzMmIzOCIgc3Ryb2tlPSIjOTRhM2I4IiBzdHJva2Utd2lkdGg9IjUiLz48cGF0aCBkPSJNLTI0LTQ1aDQ4TS0yNC0yMmg0OE0tMjQgMWg0OE0tMjQgMjRoNDhNLTI0IDQ3aDQ4IiBzdHJva2U9IiNjYmQ1ZTEiIHN0cm9rZS13aWR0aD0iNSIvPjx0ZXh0IHg9IjAiIHk9Ii03OSIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZmlsbD0iI2NiZDVlMSIgZm9udC1zaXplPSIxOSI+RklMVFI8L3RleHQ+PC9nPgo8ZyB0cmFuc2Zvcm09InRyYW5zbGF0ZSg5NDUgNTA1KSI+PHJlY3QgeD0iLTQwIiB5PSItNjEiIHdpZHRoPSI4MCIgaGVpZ2h0PSIxMjIiIHJ4PSIxMiIgZmlsbD0iIzEzMmIzOCIgc3Ryb2tlPSIjOTRhM2I4IiBzdHJva2Utd2lkdGg9IjUiLz48cGF0aCBkPSJNLTI0LTQ1aDQ4TS0yNC0yMmg0OE0tMjQgMWg0OE0tMjQgMjRoNDhNLTI0IDQ3aDQ4IiBzdHJva2U9IiNjYmQ1ZTEiIHN0cm9rZS13aWR0aD0iNSIvPjx0ZXh0IHg9IjAiIHk9IjkxIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmaWxsPSIjY2JkNWUxIiBmb250LXNpemU9IjE5Ij5GSUxUUjwvdGV4dD48L2c+CjxnIHRyYW5zZm9ybT0idHJhbnNsYXRlKDU2MCAyNjApIj48ZyBjbGFzcz0ic3BpbiI+PGNpcmNsZSByPSI1MyIgZmlsbD0iIzEwMmIzYiIgc3Ryb2tlPSIjNjdlOGY5IiBzdHJva2Utd2lkdGg9IjYiLz48cGF0aCBkPSJNMC00MUMzMS00MSAzNC0xMCA4IDBDNDIgOSAzMCAzOSAxIDIzQy04IDU1LTQwIDQwLTI1IDEwQy01NiAxLTQzLTMyLTEwLTIyQy0zLTM2LTEtNDAgMC00MXoiIGZpbGw9IiMzOGJkZjgiLz48L2c+PC9nPgo8ZyB0cmFuc2Zvcm09InRyYW5zbGF0ZSg4NDAgNTA1KSI+PGcgY2xhc3M9InNwaW4iPjxjaXJjbGUgcj0iNTMiIGZpbGw9IiMzMDI2MWYiIHN0cm9rZT0iI2ZkYmE3NCIgc3Ryb2tlLXdpZHRoPSI2Ii8+PHBhdGggZD0iTTAtNDFDMzEtNDEgMzQtMTAgOCAwQzQyIDkgMzAgMzkgMSAyM0MtOCA1NS00MCA0MC0yNSAxMEMtNTYgMS00My0zMi0xMC0yMkMtMy0zNi0xLTQwIDAtNDF6IiBmaWxsPSIjZmI5MjNjIi8+PC9nPjwvZz4KPGc+PHJlY3QgeD0iNjE4IiB5PSIzMDAiIHdpZHRoPSIxNjQiIGhlaWdodD0iMTY1IiByeD0iMjIiIGZpbGw9IiMwZDI0MzEiIHN0cm9rZT0idXJsKCNoeCkiIHN0cm9rZS13aWR0aD0iOCIvPjxwYXRoIGQ9Ik02NDIgMzI1bDExNiAxMTZNNjQyIDM2NWw3NiA3Nk02ODIgMzI1bDc2IDc2TTc1OCAzMjVMNjQyIDQ0MU03MTggMzI1bC03NiA3NiIgc3Ryb2tlPSIjZDllZGY0IiBzdHJva2Utd2lkdGg9IjkiIG9wYWNpdHk9Ii44Ii8+PHRleHQgeD0iNzAwIiB5PSI0OTMiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZpbGw9IiNlMmU4ZjAiIGZvbnQtc2l6ZT0iMjAiIGZvbnQtd2VpZ2h0PSI3MDAiPlbDnU3Emk7DjUsgVEVQTEE8L3RleHQ+PC9nPgo8cGF0aCBkPSJNNTg1IDI2MEM1ODUgMTgzIDgxNSAxODMgODE1IDI2MCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjYTc4YmZhIiBzdHJva2Utd2lkdGg9IjEwIiBzdHJva2UtZGFzaGFycmF5PSIxOCAxNSIgY2xhc3M9ImZsb3ctYmx1ZSIvPgo8cmVjdCB4PSI2NzUiIHk9IjE3NyIgd2lkdGg9IjUwIiBoZWlnaHQ9IjMzIiByeD0iOCIgZmlsbD0iIzZkNWE5ZSIgc3Ryb2tlPSIjYzRiNWZkIiBzdHJva2Utd2lkdGg9IjQiLz48dGV4dCB4PSI3MDAiIHk9IjE5OSIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZmlsbD0id2hpdGUiIGZvbnQtc2l6ZT0iMTUiIGZvbnQtd2VpZ2h0PSI3MDAiPkJZUEFTUzwvdGV4dD4KPHBhdGggZD0iTTcwMCA1MjN2NzUiIHN0cm9rZT0iI2ZiYmYyNCIgc3Ryb2tlLXdpZHRoPSI4IiBzdHJva2UtZGFzaGFycmF5PSIxMCA5Ii8+PHBhdGggZD0iTTY3NyA1OTloNDZsLTIzIDM1eiIgZmlsbD0iI2ZiYmYyNCIgY2xhc3M9InB1bHNlIi8+PHRleHQgeD0iNzAwIiB5PSI2ODQiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZpbGw9IiNmZGU2OGEiIGZvbnQtc2l6ZT0iMTkiIGZvbnQtd2VpZ2h0PSI3MDAiPk9EVk9EIEtPTkRFTlrDgVRVPC90ZXh0PgoKPC9nPjwvc3ZnPg==
+    elements:
+      - type: state-icon
+        entity: switch.rekuperace_zapnuto
+        title: Zapnout nebo vypnout rekuperaci
+        tap_action:
+          action: toggle
+        style:
+          left: 46.800000000000004%
+          top: 7%
+          color: '#22d3ee'
+          '--mdc-icon-size': 30px
+          background: rgba(5,20,30,0.88)
+          border: 1px solid rgba(103,232,249,0.65)
+          border-radius: 50%
+          padding: 8px
+      - type: state-icon
+        entity: switch.rekuperace_boost
+        title: Boost
+        tap_action:
+          action: toggle
+        style:
+          left: 53.2%
+          top: 7%
+          color: '#fbbf24'
+          '--mdc-icon-size': 30px
+          background: rgba(5,20,30,0.88)
+          border: 1px solid rgba(251,191,36,0.65)
+          border-radius: 50%
+          padding: 8px
+      - type: state-label
+        entity: select.rekuperace_rezim
+        prefix: 'Režim: '
+        tap_action:
+          action: more-info
+        style:
+          left: 50%
+          top: 16%
+          color: white
+          font-size: clamp(12px,1.35vw,16px)
+          font-weight: 700
+          background: rgba(3,18,27,0.9)
+          border: 1px solid '#55798b'
+          border-radius: 12px
+          padding: 8px 14px
+      - type: state-label
+        entity: sensor.rekuperace_venkovni_teplota
+        prefix: 'Venku '
+        tap_action:
+          action: more-info
+        style:
+          left: 18.8%
+          top: 28%
+          color: '#bae6fd'
+          font-size: clamp(12px,1.4vw,14px)
+          font-weight: 700
+          background: rgba(3,18,27,0.88)
+          border: 1px solid '#38bdf8'
+          border-radius: 12px
+          padding: 8px 13px
+      - type: state-label
+        entity: sensor.rekuperace_teplota_odtah_interier
+        prefix: 'Interiér '
+        tap_action:
+          action: more-info
+        style:
+          left: 81.2%
+          top: 28%
+          color: '#fed7aa'
+          font-size: clamp(12px,1.4vw,14px)
+          font-weight: 700
+          background: rgba(3,18,27,0.88)
+          border: 1px solid '#fb923c'
+          border-radius: 12px
+          padding: 8px 13px
+      - type: state-label
+        entity: sensor.rekuperace_teplota_vyfuk_ven
+        prefix: 'Výfuk '
+        tap_action:
+          action: more-info
+        style:
+          left: 18.8%
+          top: 70%
+          color: '#fed7aa'
+          font-size: clamp(12px,1.4vw,14px)
+          font-weight: 700
+          background: rgba(3,18,27,0.88)
+          border: 1px solid '#fb923c'
+          border-radius: 12px
+          padding: 8px 13px
+      - type: state-label
+        entity: sensor.rekuperace_vlhkost_odtah_interier
+        prefix: 'Vlhkost '
+        tap_action:
+          action: more-info
+        style:
+          left: 81.2%
+          top: 60%
+          color: '#a5f3fc'
+          font-size: clamp(11px,1.25vw,15px)
+          font-weight: 700
+          background: rgba(3,18,27,0.88)
+          border: 1px solid '#22d3ee'
+          border-radius: 12px
+          padding: 7px 12px
+      - type: state-label
+        entity: sensor.rekuperace_co2
+        prefix: 'CO₂ '
+        tap_action:
+          action: more-info
+        style:
+          left: 81.2%
+          top: 69%
+          color: '#bbf7d0'
+          font-size: clamp(11px,1.25vw,15px)
+          font-weight: 700
+          background: rgba(3,18,27,0.88)
+          border: 1px solid '#4ade80'
+          border-radius: 12px
+          padding: 7px 12px
+      - type: state-label
+        entity: sensor.rekuperace_pm2_5
+        prefix: 'PM2.5 '
+        tap_action:
+          action: more-info
+        style:
+          left: 81.2%
+          top: 78%
+          color: '#ddd6fe'
+          font-size: clamp(11px,1.25vw,15px)
+          font-weight: 700
+          background: rgba(3,18,27,0.88)
+          border: 1px solid '#a78bfa'
+          border-radius: 12px
+          padding: 7px 12px
+      - type: state-label
+        entity: sensor.rekuperace_voc_uroven
+        prefix: 'VOC '
+        tap_action:
+          action: more-info
+        style:
+          left: 81.2%
+          top: 87%
+          color: '#fde68a'
+          font-size: clamp(11px,1.25vw,15px)
+          font-weight: 700
+          background: rgba(3,18,27,0.88)
+          border: 1px solid '#fbbf24'
+          border-radius: 12px
+          padding: 7px 12px
+      - type: state-label
+        entity: number.rekuperace_privod_stupen
+        prefix: 'Přívod '
+        tap_action:
+          action: more-info
+        style:
+          left: 42%
+          top: 39%
+          color: '#a5f3fc'
+          font-size: clamp(11px,1.2vw,15px)
+          font-weight: 700
+          background: rgba(3,18,27,0.9)
+          border-radius: 8px
+          padding: 6px 8px
+      - type: state-label
+        entity: number.rekuperace_odtah_stupen
+        prefix: 'Odtah '
+        tap_action:
+          action: more-info
+        style:
+          left: 58%
+          top: 59%
+          color: '#fed7aa'
+          font-size: clamp(11px,1.2vw,15px)
+          font-weight: 700
+          background: rgba(3,18,27,0.9)
+          border-radius: 8px
+          padding: 6px 8px
+      - type: state-label
+        entity: select.rekuperace_bypass_klapka
+        prefix: 'Bypass: '
+        tap_action:
+          action: more-info
+        style:
+          left: 50%
+          top: 27%
+          color: '#ddd6fe'
+          font-size: clamp(8px,1.1vw,14px)
+          font-weight: 700
+          background: rgba(46,31,74,0.9)
+          border: 1px solid '#a78bfa'
+          border-radius: 8px
+          padding: 6px 8px
+      - type: state-icon
+        entity: binary_sensor.rekuperace_odmrazovani
+        title: Odmrazování
+        tap_action:
+          action: more-info
+        style:
+          left: 50%
+          top: 70%
+          color: '#93c5fd'
+          '--mdc-icon-size': 27px
+          background: rgba(3,18,27,0.88)
+          border-radius: 50%
+          padding: 8px
+  - type: grid
+    columns: 3
+    square: false
+    cards:
+      - type: entities
+        title: Provoz a ventilátory
+        show_header_toggle: false
+        state_color: true
+        entities:
+          - entity: switch.rekuperace_zapnuto
+            name: Rekuperace zapnuta
+          - entity: select.rekuperace_rezim
+            name: Režim
+          - entity: number.rekuperace_privod_stupen
+            name: Přívodní ventilátor
+          - entity: number.rekuperace_odtah_stupen
+            name: Odtahový ventilátor
+          - entity: switch.rekuperace_boost
+            name: Boost
+          - entity: switch.rekuperace_fan_separation
+            name: Oddělené řízení ventilátorů
+      - type: entities
+        title: Klapky a teplotní funkce
+        show_header_toggle: false
+        state_color: true
+        entities:
+          - entity: select.rekuperace_bypass_klapka
+            name: Bypass klapka
+          - entity: select.rekuperace_bypass_automatika
+            name: Automatika bypassu
+          - entity: select.rekuperace_externi_klapka
+            name: Externí klapka
+          - entity: switch.rekuperace_predehrev_preheat
+            name: Předehřev
+          - entity: switch.rekuperace_dohrev_postheat
+            name: Dohřev
+          - entity: switch.rekuperace_free_cooling
+            name: Free cooling
+          - entity: binary_sensor.rekuperace_odmrazovani
+            name: Odmrazování
+      - type: entities
+        title: Filtry a servis
+        show_header_toggle: false
+        entities:
+          - entity: sensor.rekuperace_g_filtr_hodiny
+            name: G filtr — provozní hodiny
+          - entity: sensor.rekuperace_f_filtr_hodiny
+            name: F filtr — provozní hodiny
+          - entity: sensor.rekuperace_h_filtr_hodiny
+            name: H filtr — provozní hodiny
+          - entity: button.rekuperace_reset_g_filtru
+            name: Reset G filtru
+          - entity: button.rekuperace_reset_f_filtru
+            name: Reset F filtru
+          - entity: button.rekuperace_reset_h_filtru
+            name: Reset H filtru
+  - type: grid
+    columns: 2
+    square: false
+    cards:
+      - type: history-graph
+        title: Teploty a vlhkost — 24 hodin
+        hours_to_show: 24
+        entities:
+          - entity: sensor.rekuperace_teplota_odtah_interier
+            name: Interiér
+          - entity: sensor.rekuperace_venkovni_teplota
+            name: Venkovní vzduch
+          - entity: sensor.rekuperace_teplota_vyfuk_ven
+            name: Výfuk
+          - entity: sensor.rekuperace_vlhkost_odtah_interier
+            name: Vlhkost
+      - type: history-graph
+        title: Kvalita vzduchu — 24 hodin
+        hours_to_show: 24
+        entities:
+          - entity: sensor.rekuperace_co2
+            name: CO₂
+          - entity: sensor.rekuperace_pm2_5
+            name: PM2.5
+          - entity: sensor.rekuperace_voc_uroven
+            name: VOC
